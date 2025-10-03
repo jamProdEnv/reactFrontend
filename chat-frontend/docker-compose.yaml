@@ -1,0 +1,13 @@
+services:
+  react-chat:
+    build:
+      context: .
+      args:
+        VITE_BACKEND_URL: mongodb://root:example@mongo:27017/chat
+      ports:
+        - "30000:80"
+    networks: 
+      - chat-network
+network:
+  chat-network:
+    driver: bridge
