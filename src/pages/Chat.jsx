@@ -1,4 +1,4 @@
-import { ChatRoom } from "../component/Chatroom";
+import { ChatRoom } from "../component/ChatRoom";
 import { Header } from "../component/Header";
 import { Status } from "../component/Status";
 import { useSocket } from "../context/SocketIOContext";
