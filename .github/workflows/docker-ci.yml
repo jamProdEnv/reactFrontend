@@ -2,7 +2,7 @@ name: Docker CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-and-deploy:
@@ -26,7 +26,7 @@ jobs:
 
       # 4. Build new Docker image
       - name: Build Docker image
-        run: docker build -t devjam12/c-frontend:latest .
+        run: docker build --build-arg VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} -t devjam12/c-frontend:latest .
 
       # 5. Push Docker image to Docker Hub
       - name: Push Docker image
@@ -60,4 +60,3 @@ jobs:
       #       echo "SSH connection successful"
       #       whoami
       #       hostname
-
