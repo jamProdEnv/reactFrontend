@@ -11,6 +11,7 @@ import { Wrapper } from "./component/Wrapper";
 import { LandingPage } from "./component/LandingPage";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
+import { GlobalFooter } from "./component/GlobalFooter";
 
 function App() {
   const queryClient = new QueryClient();
@@ -52,15 +53,17 @@ function App() {
   ]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthContextProvider>
-        <SocketIOContextProvider>
-          <UserContextProvider>
-            <RouterProvider router={router} />
-          </UserContextProvider>
-        </SocketIOContextProvider>
-      </AuthContextProvider>
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
+          <SocketIOContextProvider>
+            <UserContextProvider>
+              <RouterProvider router={router} />
+            </UserContextProvider>
+          </SocketIOContextProvider>
+        </AuthContextProvider>
+      </QueryClientProvider>
+    </>
   );
 }
 

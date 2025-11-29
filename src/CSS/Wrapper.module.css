@@ -6,7 +6,6 @@
   height: 100%;
   margin: 0;
   width: 100%;
-  min-height: 100vh;
 }
 
 header {
@@ -15,10 +14,11 @@ header {
 }
 
 main {
-  display: block;
+  display: flex;
 }
 
 footer {
-  position: sticky;
-  bottom: 0;
+  display: block;
+  height: auto;
+  position: static;
 }

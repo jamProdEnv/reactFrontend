@@ -28,6 +28,19 @@ textarea {
   width: 100%;
 }
 
+.submit {
+  position: relative;
+}
+
+.icon {
+  border: 1px solid yellowgreen;
+  color: yellowgreen;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  transform: translateY(-50%);
+}
+
 .submit input {
   height: 2.5em;
 }
