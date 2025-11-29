@@ -1,11 +1,12 @@
 .container {
-  display: block;
+  display: flex;
   overflow: hidden;
   background-color: skyblue;
   border: 3px solid purple;
   height: 100%;
   margin: 0;
   width: 100%;
+  min-height: 100vh;
 }
 
 header {
@@ -14,6 +15,7 @@ header {
 }
 
 main {
+  flex: 1;
   display: flex;
   overflow: hidden;
 }

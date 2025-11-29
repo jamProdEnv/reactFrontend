@@ -11,6 +11,13 @@
   margin: 1em 0 0 0;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 @media screen and (max-width: 799px) {
   :root {
     box-sizing: border-box;

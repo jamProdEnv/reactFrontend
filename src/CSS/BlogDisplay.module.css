@@ -6,7 +6,7 @@
   margin: 0 auto;
   background: black;
   border: 3px solid blue;
-  height: auto;
+  height: 100%;
   /* overflow: hidden; */
   width: 100%;
 }
@@ -116,6 +116,7 @@
 
 @media screen and (min-width: 800px) {
 }
+
 @media screen and (max-width: 799px) {
   .container {
     display: grid;
