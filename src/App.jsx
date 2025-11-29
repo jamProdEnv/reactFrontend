@@ -13,7 +13,6 @@ import { Wrapper } from "./component/Wrapper";
 import { LandingPage } from "./component/LandingPage";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
-import { ChatBox } from "./component/chatComponent/Chatbox";
 import { ChatRoom } from "./component/chatComponent/ChatRoom";
 
 function App() {
