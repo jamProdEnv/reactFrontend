@@ -5,15 +5,12 @@ import { Chat } from "./pages/chatPages/Chat";
 import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { AuthContextProvider } from "./context/AuthContext";
-import { userContext, UserContextProvider } from "./context/UserContext";
+import { UserContextProvider } from "./context/UserContext";
 import { Blog } from "./pages/blogPages/Blog";
-import { GlobalHeader } from "./component/GlobalHeader";
-import { element } from "prop-types";
 import { Wrapper } from "./component/Wrapper";
 import { LandingPage } from "./component/LandingPage";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
-import { ChatRoom } from "./component/chatComponent/ChatRoom";
 
 function App() {
   const queryClient = new QueryClient();
