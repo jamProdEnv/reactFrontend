@@ -15,7 +15,7 @@ export function useChat() {
   }
 
   useEffect(() => {
-    // if (!socket) return;
+    if (!socket) return;
 
     socket.off("chat.message", receiveMessage);
     socket.on("chat.message", receiveMessage);
