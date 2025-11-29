@@ -3,16 +3,15 @@ import classes from "../../CSS/Post.module.css";
 export function Post({ title, contents, author }) {
   return (
     <article className={classes.container}>
-      <h3 className={classes.postTitle}>{title}</h3>
-      <div className={classes.postContents}>
+      <h3 className={classes.title}>{title}</h3>
+      <div className={classes.contents}>
         <p>"{contents}"</p>
       </div>
-      <div>
+      <div className={classes.author}>
         {author && (
-          <em>
-            <br />
+          <p>
             Written by <User id={author} />
-          </em>
+          </p>
         )}
       </div>
     </article>
