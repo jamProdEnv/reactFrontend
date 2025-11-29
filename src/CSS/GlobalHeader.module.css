@@ -1,97 +1,36 @@
-.globalHeader {
+.header {
+  width: 100%;
   margin: 0;
-  border: 2px solid orange;
-  background-color: lightsalmon;
-  padding: 0;
-  display: block;
-  width: 100%;
 }
 
-.headerDiv1 {
-  border: 3px solid black;
+.div1 {
+  display: none;
 }
 
-.globalNav {
-  border: 3px solid black;
+.div2 {
+  border: 1px solid green;
   width: 100%;
+  margin: 0;
 }
-.globalHeaderUL li {
+
+.links {
+  display: flex;
+}
+
+.links > li {
   list-style-type: none;
-  margin-right: 1em;
+  margin: auto 1.5em auto 0;
 }
 
-.globalHeaderUL li + li {
+.links > li + li {
   margin-top: 0;
 }
 
-.globalHeaderUL li a {
-  text-decoration: none;
-  color: black;
-}
-
-h1 {
-  font-size: 1.5em;
-}
-
-@media (min-width: 1000px) {
-  .headerDiv1 {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  h1 {
-    flex: 2;
-  }
-
-  .globalStatus {
-    flex: 1;
-  }
-
-  .globalStatus {
-    width: 100%;
-    text-align: right;
-  }
-
-  .globalNav {
-    margin: 0;
-  }
-
-  .globalHeaderUL {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0;
-  }
-}
-
 @media screen and (min-width: 800px) {
-  .headerDiv1 {
+  .div1 {
     display: flex;
     justify-content: space-between;
-  }
-  .globalHeaderUL {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
-  }
-}
-
-@media screen and (max-width: 799px) {
-  h1 {
-    display: none;
-  }
-  .globalNav {
+    border: 1px solid green;
     width: 100%;
-    margin: 0;
-  }
-  .globalHeaderUL {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-  }
-
-  .globalStatus {
-    display: none;
   }
 }
