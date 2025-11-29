@@ -1,0 +1,51 @@
+.container {
+  border: 1px solid green;
+}
+
+.content {
+  border: 1px solid orange;
+  display: none;
+}
+
+.content2 {
+  border: 1px solid orange;
+  display: flex;
+  max-width: 90%;
+  margin: auto;
+}
+
+.content2 > div + div {
+  margin-top: 0;
+}
+
+.textarea {
+  flex: 2;
+}
+
+textarea {
+  height: 2.5em;
+  width: 100%;
+}
+
+.submit input {
+  height: 2.5em;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    width: 1080px;
+  }
+  .content {
+    display: flex;
+    margin: 1em auto;
+    max-width: 90%;
+  }
+
+  .content > div {
+    margin-top: 0;
+  }
+
+  .content > div {
+    margin-right: 1.5em;
+  }
+}
