@@ -15,8 +15,7 @@ header {
 }
 
 main {
-  display: flex;
-  overflow: hidden;
+  display: block;
 }
 
 footer {
