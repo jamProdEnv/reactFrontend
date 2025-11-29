@@ -2,7 +2,7 @@ import { userContext } from "../../context/UserContext";
 import { EnterMessage } from "./EnterMessage";
 import { ChatMessage } from "./ChatMessage";
 import classes from "../../CSS/ChatCSS/ChatBox.module.css";
-import ChatIcon from "@mui/icons-material/chat";
+import ChatIcon from "@mui/icons-material/Chat";
 import { Minimize } from "@mui/icons-material";
 import { Close } from "@mui/icons-material";
 
