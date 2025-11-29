@@ -1,14 +1,14 @@
 import { Fragment } from "react";
 import { Post } from "./Post";
+import classes from "../../CSS/PostCSS/PostList.module.css";
 
 export function PostList({ posts = [] }) {
   return (
-    <div>
+    <div className={classes.postListContainer}>
       {posts.map((post) => (
-        <Fragment key={post._id}>
+        <p key={post._id}>
           <Post {...post} />
-          <hr />
-        </Fragment>
+        </p>
       ))}
     </div>
   );

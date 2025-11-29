@@ -8,5 +8,20 @@
 }
 
 * + * {
-  margin-top: 0;
+  margin: 1em 0 0 0;
+}
+
+@media screen and (max-width: 799px) {
+  :root {
+    box-sizing: border-box;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+
+  * + * {
+    margin: 1em 0 0 0;
+  }
 }

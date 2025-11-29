@@ -1,15 +1,20 @@
 import { User } from "../chatComponent/User";
-export function Post({ title, content, author }) {
+import classes from "../../CSS/Post.module.css";
+export function Post({ title, contents, author }) {
   return (
-    <article>
-      <h3>{title}</h3>
-      <div>{content}</div>
-      {author && (
-        <em>
-          <br />
-          Written by <User id={author} />
-        </em>
-      )}
+    <article className={classes.container}>
+      <h3 className={classes.postTitle}>{title}</h3>
+      <div className={classes.postContents}>
+        <p>"{contents}"</p>
+      </div>
+      <div>
+        {author && (
+          <em>
+            <br />
+            Written by <User id={author} />
+          </em>
+        )}
+      </div>
     </article>
   );
 }
