@@ -1,6 +1,6 @@
 export const createPost = async (token, post) => {
   const res = await fetch(
-    `${import.meta.env.VITE_LOCAL_BACKEND_URL}/api/v1/post/createPost`,
+    `${import.meta.env.VITE_BACKEND_URL}/api/v1/post/createPost`,
     {
       method: "POST",
       headers: {
@@ -16,7 +16,7 @@ export const createPost = async (token, post) => {
 
 export const getPosts = async (queryParams) => {
   const res = await fetch(
-    `${import.meta.env.VITE_LOCAL_BACKEND_URL}/api/v1/posts?` +
+    `${import.meta.env.VITE_BACKEND_URL}/api/v1/posts?` +
       new URLSearchParams(queryParams)
   );
   if (!res.ok) throw new Error("Cannot Find Posts.");
