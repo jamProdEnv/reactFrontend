@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, auto);
   grid-gap: 0.25em;
   margin: 0 auto;
@@ -8,6 +8,7 @@
   border: 3px solid blue;
   height: auto;
   /* overflow: hidden; */
+  width: 100%;
 }
 
 .container > * {
