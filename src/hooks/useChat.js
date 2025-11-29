@@ -1,61 +1,115 @@
-//  Receive a message
-
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react";
 import { useSocket } from "../context/SocketIOContext";
+import { userContext } from "../context/UserContext";
 
-//  Send a message
-export function useChat(){
-    const { socket } = useSocket();
-    const [messages, setMessages] = useState([]);
+export function useChat() {
+  const { socket } = useSocket();
+  const [messages, setMessages] = useState([]);
+  const { username } = userContext();
+  const [currentRoom, setCurrentRoom] = useState("public");
 
-    function receiveMessages(message){
-        //  Receives The Message Emitted From The Chat Server
-        setMessages((messages) => [...messages, message ]);
+  function receiveMessage(message) {
+    console.log("Message", message);
+    // const room = [recipient, username].sort().join("_");
+    setMessages((messages) => [...messages, message]);
+  }
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.off("chat.message", receiveMessage);
+    socket.on("chat.message", receiveMessage);
+
+    return () => socket.off("chat.message", receiveMessage);
+  }, [socket]);
+
+  function clearMessages() {
+    setMessages([]);
+  }
+
+  function switchRoom(room) {
+    setCurrentRoom(room);
+  }
+
+  function joinRoom(room) {
+    socket.emit("chat.join", room);
+    setCurrentRoom(room);
+    //  Join Room Calls switchRoom
+    switchRoom(room);
+  }
+
+  async function getRooms() {
+    const userInfo = await socket.emitWithAck("user.info", socket.id);
+    const rooms = userInfo.rooms.filter((room) => room !== socket.id);
+    return rooms;
+  }
+
+  async function sendMessage(message, recipient = null) {
+    if (!socket) return; // wait until socket is initialized
+
+    if (message.startsWith("/")) {
+      const [command, ...args] = message.substring(1).split(" ");
+      switch (command) {
+        case "clear":
+          clearMessages();
+          break;
+        case "rooms":
+          const rooms = await getRooms();
+          receiveMessage({
+            message: `You are in: ${rooms.join(".")}`,
+          });
+          break;
+        case "join": {
+          if (args.length === 0) {
+            return receiveMessage({
+              message: "Please provide a room name: /join room",
+            });
+          }
+          const room = args[0];
+          const rooms = await getRooms();
+          if (rooms.includes(room)) {
+            return receiveMessage({
+              message: `You are already in room "${room}".`,
+            });
+          }
+          joinRoom(room);
+          break;
+        }
+        case "switch": {
+          if (args.length === 0) {
+            return receiveMessage({
+              message: "Please provide a room name: /switch <room>",
+            });
+          }
+          const room = args[0];
+          const rooms = await getRooms();
+          if (!rooms.includes(room)) {
+            return receiveMessage({
+              message: `You are not in room "${room}". Type "/join ${room}" to join it first.`,
+            });
+          }
+          switchRoom(room);
+          receiveMessage({
+            message: `Switched to room "${room}".`,
+          });
+
+          break;
+        }
+        default:
+          receiveMessage({
+            message: `Unknown command: ${command}`,
+          });
+          break;
+      }
+    } else {
+      socket.emit("chat.message", currentRoom, message);
+      // } else {
+      //   socket.emit("private.message", recipient, room, message);
+      //   receiveMessage({
+      //     message: `Private Message: ${username} said "${message}."`,
+      //   });
+      // }
     }
-
-    useEffect(() => {
-        if(!socket) return;
-        function setUpListeners(){
-        
-        socket.on("chat.message", receiveMessages);
-        socket.emit("client.ready");
-        }
-
-        if(socket.connected){
-            setUpListeners();
-        } else {
-            socket.once("connect", setUpListeners);
-        };
-
-        return () => {
-            socket.off("chat.message", receiveMessages);
-            socket.off("connect", setUpListeners);
-        }
-       
-    }, []);
-
-    //  {content : "String"} from onSend in EnterMessage.jsx
-    //  Message Schema message : {type: string}
-    function sendMessage(message){
-        // const msgObj = typeof msg === "string" ? {message : msg} : {message: msg.content};
-        let msg;
-        // socket.emit("chat.message", {message: msgObj});
-   
-         // optimistically update UI immediately
-        // setMessages(prev => [...prev, msgObj]);
-        // console.log("Message Sent: ", msgObj);
-        if (typeof message === "object" && message !== null && "content" in message){
-                msg = message.content;
-        } else if (typeof message === "number" || typeof message === "string"){
-            msg = message.toString();
-        } else {
-            msg = "";
-        }
-        socket.emit("chat.message", {message : msg});
-        setMessages(prev => [...prev, msg]);
-        console.log("Message Sent: ", msg);
-    };
-    return { messages, sendMessage }
-    
+  }
+  return { messages, sendMessage, joinRoom, currentRoom, setCurrentRoom };
 }
-

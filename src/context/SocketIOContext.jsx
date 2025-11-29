@@ -1,55 +1,70 @@
-//  Context 
-//  Context Holder
-//  Context Filter
-//  Context Interceptor 
-import { useContext, useEffect, createContext, useState } from "react";
+import PropTypes from "prop-types";
+import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import { useAuth } from "./AuthContext";
 
-
-//  Context
-const SocketIOContext= createContext({
-    socket: null,
-    status: "waiting",
-    error: null
+export const SocketIOContext = createContext({
+  socket: null,
+  status: "waiting",
+  error: null,
+  onlineUsers: [],
 });
 
 export const SocketIOContextProvider = ({ children }) => {
+  const [socket, setSocket] = useState(null);
+  const [status, setStatus] = useState("waiting");
+  const [error, setError] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
-    const [socket, setSocket] = useState(null);
-    const [status, setStatus] = useState("waiting");
-    const [error, setError] = useState(null);
+  const [token, setToken] = useAuth();
 
-    useEffect(() => {
-        const socket = io("http://100.27.195.62:3000", {
-            // const socket = io("localhost:3000", {
-            query: window.location.search.substring(1),
-        });
+  useEffect(() => {
+    if (token) {
+      // const socket = io(import.meta.env.VITE_BACKEND_PROD_URL, {
+      const socket = io(import.meta.env.VITE_LOCAL_BACKEND_URL, {
+        query: window.location.search.substring(1),
+        auth: { token },
+      });
 
-        socket.on("connect", () => {
-            setStatus("connected");
-            setError(null);
-        });
+      socket.on("connect", () => {
+        setStatus("connected");
+        setError(null);
+        // request the current online users
+        socket.emit("users.request");
+      });
+      socket.on("connect_error", (error) => {
+        setStatus("error");
+        console.error(error);
+        if ((error = "Authentication failed: invalid token")) {
+          socket.disconnect();
+          localStorage.removeItem("token");
+          setToken(null);
+          setStatus("waiting");
+        }
+        setError(error);
+      });
 
-        socket.on("error", (error) => {
-            setStatus("error");
-            setError(error);
-        });
+      socket.on("disconnect", () => setStatus("disconnected"));
+      // Listen for online users from server
+      socket.on("users.online", (users) => {
+        console.log("Received online users:", users);
+        setOnlineUsers(users);
+      });
+      setSocket(socket);
+    }
+  }, [token, setSocket, setStatus, setError]);
 
-        socket.on("disconnect", () => setStatus("disconnect"));
-        setSocket(socket);
-    }, [setSocket, setStatus, setError]);
-
-    return (
-    <SocketIOContext.Provider value={ {socket, status, error} }>
-        { children }
+  return (
+    <SocketIOContext.Provider value={{ socket, status, error, onlineUsers }}>
+      {children}
     </SocketIOContext.Provider>
-    );
+  );
+};
+
+SocketIOContextProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export function useSocket() {
+  return useContext(SocketIOContext);
 }
-
-export function useSocket () {
-    return useContext(SocketIOContext);
-}
-
-
-
-
