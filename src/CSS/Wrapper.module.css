@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  display: block;
   overflow: hidden;
   background-color: skyblue;
   border: 3px solid purple;
@@ -15,7 +15,6 @@ header {
 }
 
 main {
-  flex: 1;
   display: flex;
   overflow: hidden;
 }
