@@ -16,6 +16,7 @@ header {
 main {
   /* display: flex; */ /*breaks the implementation */
   display: block;
+  height: 100%;
 }
 
 footer {
