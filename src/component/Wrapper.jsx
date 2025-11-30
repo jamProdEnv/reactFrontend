@@ -11,19 +11,17 @@ export function Wrapper() {
   return (
     <>
       <div className={classes.container}>
-        <div className={classes.wrapper}>
-          <header className={classes.header}>
-            <GlobalHeader />
-          </header>
-          <main>
-            <Outlet />
+        <header className={classes.header}>
+          <GlobalHeader />
+        </header>
+        <main>
+          <Outlet />
 
-            <ChatRoom />
-          </main>
-          <footer>
-            <GlobalFooter />
-          </footer>
-        </div>
+          <ChatRoom />
+        </main>
+        <footer>
+          <GlobalFooter />
+        </footer>
       </div>
     </>
   );
