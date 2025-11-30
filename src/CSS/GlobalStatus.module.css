@@ -9,91 +9,94 @@
 .dropdown {
   display: inline-block;
   position: relative;
-  width: 150px;
-  border-radius: 0.75em;
-  border: 1px solid yellowgreen;
+  border-radius: 25%;
+  /* border: 1px solid yellowgreen; */
 }
 
 .dropdownLabel {
   display: flex;
-  justify-content: space-between;
-  padding: 0.5em 2em 0.5em 1.5em;
-  border: 1px solid yellowgreen;
-  border-radius: 0.75em;
-  background-color: #eee;
+  justify-content: center;
+  padding: 0.5em 1.5em;
+  margin-right: 1em;
+  /* border: 1px solid yellowgreen;
+  border-radius: 25%;
+  background-color: #eee; */
+}
+.dropdownLabel > .svg {
+  font-size: 4em;
 }
 
 .dropdownLabel::after {
   content: "";
   position: absolute;
-  right: 1em;
-  top: 1em;
+  right: 0.5em;
+  top: 2.5em;
   border: 0.3em solid;
   border-color: black transparent transparent;
+  margin-right: 1em;
 }
 
 .dropdown:hover .dropdownLabel::after {
-  top: 0.7em;
+  top: 2.3em;
   border-color: transparent transparent black;
 }
 
 .dropdownMenu {
-  display: none;
+  display: block;
+  z-index: 9999; /* FIX */
   position: absolute;
-  left: 0;
-  top: 4.1em;
+  top: 250%;
+  right: 50%;
   min-width: 100%;
   background-color: #eee;
 }
 
-.dropdown:hover .dropdownMenu {
+/* .dropdown:hover .dropdownMenu {
   display: block;
-}
+} */
 
 .submenu {
   padding-left: 0;
   margin: 0;
   list-style-type: none;
   border: 1px solid yellowgreen;
+  width: 200px;
 }
 
 .submenu > li + li {
-  border-top: 1px solid yellowgreen;
+  /* border-top: 1px solid yellowgreen; */
+}
+
+.submenu > li {
+  padding: 0.5em 1.5em;
 }
 
 .submenu > li * {
   display: block;
-  padding: 0.5em 1.5em;
-  text-align: center;
-  cursor: pointer;
+  text-align: left;
+}
+
+.submenu svg {
+  font-size: 4em;
 }
 a {
   text-decoration: none;
   color: black;
 }
 
-.submenu > li > p:hover {
+.submenu > li:hover {
   background-color: #fff;
 }
 
-.statusContainer {
-  display: flex;
-  border: 3px solid green;
-  justify-content: center;
-  align-items: end;
-}
-
-.status {
-  border: 1px solid black;
-  border-radius: 50%;
-  height: 1em;
-  width: 1em;
-  background-color: greenyellow;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.account {
+  font-size: 4em;
 }
 
 .statusDisplay {
   display: none;
+}
+
+.login {
+  display: block;
+  width: max-content;
 }

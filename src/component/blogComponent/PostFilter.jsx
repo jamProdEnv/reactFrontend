@@ -32,7 +32,7 @@ export function PostFilter({ field, value, onChange }) {
     }
   };
   return (
-    <div className={classes.postFilterContainer}>
+    <div className={classes.container}>
       {options.map((opt) => (
         <label key={opt} className={classes.radioLabel}>
           <input
@@ -43,7 +43,7 @@ export function PostFilter({ field, value, onChange }) {
             onChange={() => handleRadioChange(opt)}
             className={classes.radioInput}
           />
-          <span className={classes.customRadio}></span>
+          <span className={classes.radio}></span>
           {opt}
         </label>
       ))}
