@@ -14,7 +14,8 @@ header {
 }
 
 main {
-  display: flex;
+  /* display: flex; */ /*breaks the implementation */
+  display: block;
 }
 
 footer {
