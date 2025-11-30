@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: block;
   overflow: hidden;
   background-color: skyblue;
@@ -14,7 +14,7 @@ header {
 }
 
 main {
-  /* display: flex; */ /*breaks the implementation */
+  
   display: flex;
   height: 100%;
   background-color: white;
@@ -24,4 +24,4 @@ footer {
   display: block;
   height: auto;
   position: static;
-}
+} */
