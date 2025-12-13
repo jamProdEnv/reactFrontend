@@ -10,8 +10,19 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx AS final
+# Stage 2: Serve with NGINX
+FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
+# Copy React build to NGINX root
+# COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /build/dist /usr/share/nginx/html
 
-COPY --from=build /build/dist .
+
+# Copy custom NGINX config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
+
+# Start NGINX
+CMD ["nginx", "-g", "daemon off;"]
