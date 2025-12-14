@@ -6,8 +6,14 @@ services:
         VITE_BACKEND_URL: mongodb://root:example@mongo:27017/chat
       ports:
         - "30000:80"
-    networks: 
+        # - "80:80"     # HTTP
+        # - "443:443"   # HTTPS
+    networks:
       - chat-network
 network:
   chat-network:
     driver: bridge
+
+volumes:
+  mongo-data:
+  certs:

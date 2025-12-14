@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  # MongoDB container
+  chat-database:
+    image: mongo:latest
+    container_name: chat-database
+    ports:
+      - "27017:27017"
+    networks:
+      - chat-network
+    volumes:
+      - mongo-data:/data/db
+
+  # Node backend container
+  node-server:
+    image: devjam12/node-server:latest
+    container_name: node-server
+    ports:
+      - "3000:3000"
+    networks:
+      - chat-network
+    environment:
+      - MONGO_URL=mongodb://root:example@chat-database:27017/chat
+
+  # React frontend served with NGINX
+  c-frontend:
+    image: devjam12/c-frontend:latest
+    container_name: c-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - chat-network
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+networks:
+  chat-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
