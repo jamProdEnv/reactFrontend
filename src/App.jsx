@@ -20,6 +20,10 @@ function App() {
       element: <Wrapper />,
       children: [
         {
+          path: "/.well-known/acme-challenge/:token",
+          element: <div></div>, // Just render an empty div
+        },
+        {
           path: "/",
           element: <LandingPage />,
         },
