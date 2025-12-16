@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { Post } from "./Post";
 import classes from "../../CSS/PostCSS/PostList.module.css";
 
@@ -13,3 +13,5 @@ export function PostList({ posts = [] }) {
     </div>
   );
 }
+
+export default memo(PostList);

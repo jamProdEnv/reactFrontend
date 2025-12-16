@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import classes from "../../CSS/PostCSS/PostSorting.module.css";
 export function PostSorting({
   fields = [],
@@ -6,13 +7,13 @@ export function PostSorting({
   onOrderChange,
   onChange,
 }) {
-  const handleSelect = (field) => {
+  const handleSelect = useCallback((field) => {
     if (value === field) {
       onChange(""); // unselect
     } else {
       onChange(field);
     }
-  };
+  });
   return (
     // <div className={classes.postSortingContainer}>
     //   <label className={classes.postSortBylabel} htmlFor="sort-by">
@@ -114,3 +115,5 @@ export function PostSorting({
     </div>
   );
 }
+
+export default memo(PostSorting);

@@ -95,3 +95,5 @@ export function CreatePost() {
     </div>
   );
 }
+
+export default CreatePost;
