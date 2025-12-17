@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { User } from "../chatComponent/User";
 import classes from "../../CSS/Post.module.css";
 export function Post({ title, contents, author }) {
@@ -17,3 +18,5 @@ export function Post({ title, contents, author }) {
     </article>
   );
 }
+
+export default memo(Post);
