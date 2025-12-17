@@ -3,6 +3,8 @@ import { useState } from "react";
 import { createPost } from "../../api/Posts";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import CheckIcon from "@mui/icons-material/Check";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import classes from "../../CSS/PostCSS/CreatePost.module.css";
 
 export function CreatePost() {
@@ -35,20 +37,18 @@ export function CreatePost() {
 
   if (!token)
     return (
-      <div className={classes.createPostContainer}>
+      <div className={classes.container}>
         <p>
           Please <Link to="/Login">Login</Link> To Create A Post.
         </p>
       </div>
     );
   return (
-    <div className={classes.createPostContainer}>
-      <form onSubmit={handleSubmit} className={classes.formContainer}>
-        <div className={classes.createPostTitleTags}>
-          <div className={classes.createPostTitle}>
-            <label className={classes.createPostLabel} htmlFor="create-title">
-              Title:{" "}
-            </label>
+    <div className={classes.container}>
+      <form onSubmit={handleSubmit}>
+        <div className={classes.content}>
+          <div className={classes.title}>
+            {/* <label htmlFor="create-title">Title: </label> */}
             <input
               type="text"
               placeholder="T I T L E"
@@ -57,10 +57,8 @@ export function CreatePost() {
             />
           </div>
 
-          <div className={classes.createPostTags}>
-            <label className={classes.createPostLabel} htmlFor="create-tags">
-              Tags:
-            </label>
+          <div className={classes.tags}>
+            {/* <label htmlFor="create-tags">Tags:</label> */}
             <input
               type="text"
               value={tags}
@@ -69,17 +67,17 @@ export function CreatePost() {
             />
           </div>
         </div>
-        <div className={classes.createPostBlock}>
-          <textarea
-            className={classes.createPostTextArea}
-            placeholder={"C R E A T E  P O S T"}
-            value={contents}
-            onChange={(e) => setContents(e.target.value)}
-          />
-
-          <div className={classes.createPostSubmit}>
+        <div className={classes.content2}>
+          <div className={classes.textarea}>
+            <textarea
+              placeholder={"C R E A T E  P O S T"}
+              value={contents}
+              onChange={(e) => setContents(e.target.value)}
+            />
+          </div>
+          <div className={classes.submit}>
             <input
-              className={classes.createPostInput}
+              id={"input"}
               type="submit"
               value={
                 createPostMutation.isPending ? ". . .Posting" : "Create Post"
@@ -87,10 +85,9 @@ export function CreatePost() {
               disabled={createPostMutation.isPending}
             />
             {createPostMutation.isSuccess ? (
-              <>
-                {/* <br /> */}
-                Post created successfully!
-              </>
+              <div className={classes.icon}>
+                <CheckIcon />
+              </div>
             ) : null}
           </div>
         </div>
@@ -98,3 +95,5 @@ export function CreatePost() {
     </div>
   );
 }
+
+export default CreatePost;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback, lazy, Suspense, memo } from "react";
 import { CreatePost } from "../../component/blogComponent/CreatePost";
 import { PostFilter } from "../../component/blogComponent/PostFilter";
 import { PostSorting } from "../../component/blogComponent/PostSorting";
@@ -7,8 +7,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "../../api/Posts";
 import { Post } from "../../component/blogComponent/Post";
 import { PostList } from "../../component/blogComponent/PostList";
-import { BlogDisplay } from "../../component/blogComponent/BlogDisplay";
+// import { BlogDisplay } from "../../component/blogComponent/BlogDisplay";
 import classes from "../../CSS/Blog.module.css";
+
+const BlogDisplay = lazy(
+  () => import("../../component/blogComponent/BlogDisplay")
+);
 export function Blog() {
   const [author, setAuthor] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
@@ -19,25 +23,38 @@ export function Blog() {
     queryKey: ["posts", { author, sortBy, sortOrder }],
     // queryKey: queryKey,
     queryFn: () => getPosts({ author, sortBy, sortOrder }),
+    keepPreviousData: true,
   });
 
   //  Is it available?
-  const posts = postQuery.data ?? [];
+  const posts = useMemo(() => postQuery.data ?? [], [postQuery.data]);
+
+  // Stable callback
+  const handleSortChange = useCallback((field, order) => {
+    setSortBy(field);
+    setSortOrder(order);
+  }, []);
+
   return (
     <>
       <div className={classes.container}>
-        <BlogDisplay
-          posts={posts}
-          author={author}
-          onAuthorChange={setAuthor}
-          sortBy={sortBy}
-          sortOrder={sortOrder}
-          onSortChange={(field, order) => {
-            setSortBy(field);
-            setSortOrder(order);
-          }}
-        />
+        <Suspense fallback={<p>Loading blog…</p>}>
+          <BlogDisplay
+            posts={posts}
+            author={author}
+            onAuthorChange={setAuthor}
+            sortBy={sortBy}
+            sortOrder={sortOrder}
+            // onSortChange={(field, order) => {
+            //   setSortBy(field);
+            //   setSortOrder(order);
+            // }}
+            onSortChange={handleSortChange}
+          />
+        </Suspense>
       </div>
     </>
   );
 }
+
+export default memo(Blog);

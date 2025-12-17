@@ -9,9 +9,9 @@ export function BlogHeader() {
     const { sub } = jwtDecode(token);
     return (
       <>
-        <header className={classes.blogHeader}>
-          <nav className={classes.blogNav}>
-            <ul className={classes.blogHeaderUL}>
+        <header className={classes.header}>
+          <nav className={classes.nav}>
+            <ul className={classes.links}>
               <li>
                 <a href="#">Blog</a>
               </li>
@@ -46,3 +46,5 @@ export function BlogHeader() {
     </div>
   );
 }
+
+export default BlogHeader;

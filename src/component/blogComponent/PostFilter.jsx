@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import classes from "../../CSS/PostCSS/PostFilter.module.css";
 export function PostFilter({ field, value, onChange }) {
   const [inputValue, setInputValue] = useState("");
@@ -22,7 +22,7 @@ export function PostFilter({ field, value, onChange }) {
   const options = ["author", "tag"];
 
   // Handle toggle so user can unselect a radio
-  const handleRadioChange = (opt) => {
+  const handleRadioChange = useCallback((opt) => {
     if (value === opt) {
       onChange(""); // unselect if already selected
       setInputValue(""); // clear input
@@ -30,9 +30,9 @@ export function PostFilter({ field, value, onChange }) {
       onChange(opt);
       setInputValue("");
     }
-  };
+  });
   return (
-    <div className={classes.postFilterContainer}>
+    <div className={classes.container}>
       {options.map((opt) => (
         <label key={opt} className={classes.radioLabel}>
           <input
@@ -43,7 +43,7 @@ export function PostFilter({ field, value, onChange }) {
             onChange={() => handleRadioChange(opt)}
             className={classes.radioInput}
           />
-          <span className={classes.customRadio}></span>
+          <span className={classes.radio}></span>
           {opt}
         </label>
       ))}
@@ -65,3 +65,5 @@ export function PostFilter({ field, value, onChange }) {
     </div>
   );
 }
+
+export default memo(PostFilter);

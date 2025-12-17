@@ -2,10 +2,11 @@ import classes from "../CSS/GlobalFooter.module.css";
 export function GlobalFooter() {
   return (
     <>
-      <footer className={classes.footerContainer}>
+      <footer className={classes.container}>
         <h3>Portfolio</h3>
-        <section className={classes.footerSection}>
-          <div className={classes.footerDescription}>
+
+        <section>
+          <div className={classes.div1}>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime
               nesciunt facere non, eveniet debitis fugit nisi vel vitae voluptas
@@ -14,10 +15,10 @@ export function GlobalFooter() {
             </p>
           </div>
 
-          <div className={classes.footerLinks}>
+          <div className={classes.div2}>
             <div className={classes.footerDiv}>
-              <ul>
-                <h3>#######</h3>
+              <h3>#######</h3>
+              <ul className={classes.links}>
                 <li>#</li>
                 <li>#</li>
                 <li>#</li>
@@ -28,7 +29,7 @@ export function GlobalFooter() {
 
             <div className={classes.footerDiv}>
               <h3>#######</h3>
-              <ul>
+              <ul className={classes.links}>
                 <li>#</li>
                 <li>#</li>
                 <li>#</li>
@@ -39,7 +40,7 @@ export function GlobalFooter() {
 
             <div className={classes.footerDiv}>
               <h3>#######</h3>
-              <ul>
+              <ul className={classes.links}>
                 <li>#</li>
                 <li>#</li>
                 <li>#</li>

@@ -1,10 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { Post } from "./Post";
 import classes from "../../CSS/PostCSS/PostList.module.css";
 
 export function PostList({ posts = [] }) {
   return (
-    <div className={classes.postListContainer}>
+    <div className={classes.container}>
       {posts.map((post) => (
         <p key={post._id}>
           <Post {...post} />
@@ -13,3 +13,5 @@ export function PostList({ posts = [] }) {
     </div>
   );
 }
+
+export default memo(PostList);

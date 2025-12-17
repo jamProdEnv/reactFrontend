@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import classes from "../../CSS/PostCSS/PostSorting.module.css";
 export function PostSorting({
   fields = [],
@@ -6,13 +7,13 @@ export function PostSorting({
   onOrderChange,
   onChange,
 }) {
-  const handleSelect = (field) => {
+  const handleSelect = useCallback((field) => {
     if (value === field) {
       onChange(""); // unselect
     } else {
       onChange(field);
     }
-  };
+  });
   return (
     // <div className={classes.postSortingContainer}>
     //   <label className={classes.postSortBylabel} htmlFor="sort-by">
@@ -50,8 +51,8 @@ export function PostSorting({
     //     </option>
     //   </select>
     // </div>
-    <div className={classes.postSortingContainer}>
-      <div className={classes.sortFieldGroup}>
+    <div className={classes.container}>
+      <div className={classes.div1}>
         {fields.map((field) => (
           <label key={field} className={classes.sortLabel}>
             <input
@@ -80,8 +81,8 @@ export function PostSorting({
         </select>
       </div> */}
 
-      <div className={classes.sortOrderGroup}>
-        <label>Order:</label>
+      <div className={classes.div2}>
+        {/* <label>Order:</label> */}
 
         <label className={classes.radioLabel}>
           <input
@@ -94,8 +95,7 @@ export function PostSorting({
             }
             className={classes.radioInput}
           />
-          <span className={classes.customRadio}></span>
-          ascending
+          <span className={classes.customRadio}>ascending</span>
         </label>
 
         <label className={classes.radioLabel}>
@@ -109,10 +109,11 @@ export function PostSorting({
             }
             className={classes.radioInput}
           />
-          <span className={classes.customRadio}></span>
-          descending
+          <span className={classes.customRadio}>descending</span>
         </label>
       </div>
     </div>
   );
 }
+
+export default memo(PostSorting);
