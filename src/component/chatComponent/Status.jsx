@@ -1,4 +1,4 @@
-import { useSocket } from "../context/SocketIOContext";
+import { useSocket } from "../../context/SocketIOContext";
 
 export function Status() {
   const { status, error } = useSocket();

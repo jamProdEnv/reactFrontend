@@ -1,0 +1,7 @@
+.chatHeader {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  border: 1px solid black;
+}

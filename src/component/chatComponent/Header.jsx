@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useSocket } from "../context/SocketIOContext";
+import { useSocket } from "../../context/SocketIOContext";
 import { jwtDecode } from "jwt-decode";
 import { User } from "./User";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 export function Header() {
   const [token, setToken] = useAuth();

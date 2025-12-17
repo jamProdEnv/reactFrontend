@@ -1,0 +1,20 @@
+.header {
+  width: 100%;
+  border: 1px solid green;
+}
+
+.links {
+  display: flex;
+}
+
+.links > li {
+  list-style-type: none;
+  margin: auto 1.5em auto 0;
+}
+
+.links > li + li {
+  margin-top: 0;
+}
+
+@media screen and (min-height: 800px) {
+}
