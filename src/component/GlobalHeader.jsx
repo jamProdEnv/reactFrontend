@@ -16,7 +16,7 @@ export function GlobalHeader() {
           <nav className={classes.nav}>
             <ul className={classes.links}>
               <li>
-                <Link to={"/"}>Main</Link>
+                <Link to={"/"}>Home</Link>
               </li>
               <li>
                 <Link to={"/resume"}>Profile</Link>
