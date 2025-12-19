@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 .header {
   width: 100%;
   margin: 0;
+}
+
+.header h1 {
+  font-family: "Permanent Marker";
+  letter-spacing: 1rem;
 }
 
 .div1 {
@@ -26,11 +34,65 @@
   margin-top: 0;
 }
 
+.links li > a {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
 @media screen and (min-width: 800px) {
+  .header {
+    background-color: transparent;
+  }
+
   .div1 {
     display: flex;
     justify-content: space-between;
     border: 1px solid green;
+    background-color: rgba(235, 238, 240, 0.6);
+    color: white;
     width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .header {
+    background-color: transparent;
+  }
+
+  .div1 {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid green;
+    background-color: rgba(225, 230, 235, 0.75);
+    backdrop-filter: blur(10px);
+    color: #2e2e2e;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .div2 {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 1080px;
+    max-width: 1080px;
+    border-radius: 2em;
+  }
+
+  .links li {
+    margin: 0 2em;
+  }
+
+  .links li a {
+    padding: 0.5em 1.5em;
+    border-radius: 2em;
+    transition: background-color 0.2s ease-in-out 0.05s;
+  }
+
+  .links > li > a:hover {
+    background-color: black;
+    color: white;
   }
 }

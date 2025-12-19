@@ -6,7 +6,7 @@ export function GlobalHeader() {
     <>
       <header className={classes.header}>
         <div className={classes.div1}>
-          <h1>Portfolio</h1>
+          <h1>Wsjr</h1>
           <div className={classes.status}>
             <GlobalStatus />
           </div>

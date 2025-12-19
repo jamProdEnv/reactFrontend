@@ -100,3 +100,12 @@ a {
   display: block;
   width: max-content;
 }
+
+.offline {
+  margin-right: 0;
+  text-align: right;
+}
+
+.login a {
+  letter-spacing: 0.2em;
+}

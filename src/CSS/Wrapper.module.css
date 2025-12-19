@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: skyblue;
+  /* background-color: skyblue; */
   border: 3px solid purple;
   height: 100%;
   margin: 0;
