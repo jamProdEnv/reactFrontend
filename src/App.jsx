@@ -57,17 +57,17 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/_Q8f3aZk/admin",
+          path: "/_Q8f3aZkadmin",
           element: <AdminPage />,
         },
 
         {
-          path: "/_A9x2LmP/adminSignup",
+          path: "/_A9x2LmPsignup",
           element: <AdminSignup />,
         },
 
         {
-          path: "/_Q8f4ZkN/adminLogin",
+          path: "/_Q8f4ZkNlogin",
           element: <AdminLogin />,
         },
       ],
