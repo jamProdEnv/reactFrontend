@@ -3,8 +3,9 @@ import { useAuth } from "../../context/AuthContext";
 import classes from "../../CSS/BlogHeader.module.css";
 import { Link } from "react-router-dom";
 import { User } from "../chatComponent/User";
+import { Admin } from "../adminComponent/Admin";
 export function BlogHeader() {
-  const [token] = useAuth();
+  const [token, role] = useAuth();
   if (token) {
     const { sub } = jwtDecode(token);
     return (
@@ -33,15 +34,22 @@ export function BlogHeader() {
             </ul>
           </nav>
         </header>
-        <h3>
-          Logged in as <User id={sub} />
-        </h3>
+
+        {role === "admin" ? (
+          <h3>
+            <Admin id={sub} />
+          </h3>
+        ) : (
+          <h3>
+            Logged in as <User id={sub} />
+          </h3>
+        )}
       </>
     );
   }
   return (
     <div>
-      {/* <Link to={"/login"}>Log In</Link> | <Link to={"/signup"}>Sign Up</Link> */}
+      <Link to={"/login"}>Log In</Link> | <Link to={"/signup"}>Sign Up</Link>
       <h3>Blog</h3>
     </div>
   );

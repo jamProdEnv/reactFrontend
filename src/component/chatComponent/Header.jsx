@@ -5,7 +5,7 @@ import { User } from "./User";
 import { useAuth } from "../../context/AuthContext";
 
 export function Header() {
-  const [token, setToken] = useAuth();
+  const [token, role, setToken] = useAuth();
   const { socket } = useSocket();
 
   const handleLogout = () => {
@@ -14,9 +14,19 @@ export function Header() {
     setToken(null);
   };
 
-  if (token) {
-    const { sub } = jwtDecode(token);
+  const { sub } = jwtDecode(token);
+  console.log(role);
+  if (token && role === "admin") {
+    return (
+      <div>
+        Logged in as <Admin id={sub} />
+        <br />
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
 
+  if (token && role === "user") {
     return (
       <div>
         Logged in as <User id={sub} />
@@ -25,7 +35,6 @@ export function Header() {
       </div>
     );
   }
-
   return (
     <div>
       <Link to={"/login"}>Log In</Link> | <Link to={"/signup"}>Sign Up</Link>

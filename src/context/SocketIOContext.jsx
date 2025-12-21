@@ -16,7 +16,7 @@ export const SocketIOContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
-  const [token, setToken] = useAuth();
+  const [token, role, setToken] = useAuth();
 
   useEffect(() => {
     if (token) {

@@ -1,7 +1,10 @@
 import { memo } from "react";
 import { User } from "../chatComponent/User";
 import classes from "../../CSS/Post.module.css";
+import { useAuth } from "../../context/AuthContext";
+import { Admin } from "../adminComponent/Admin";
 export function Post({ title, contents, author }) {
+  const [, role] = useAuth();
   return (
     <article className={classes.container}>
       <h3 className={classes.title}>{title}</h3>
@@ -9,9 +12,9 @@ export function Post({ title, contents, author }) {
         <p>"{contents}"</p>
       </div>
       <div className={classes.author}>
-        {author && (
+        {role === "admin" && author && (
           <p>
-            Written by <User id={author} />
+            Written by <Admin id={author} />
           </p>
         )}
       </div>

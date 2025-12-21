@@ -10,7 +10,7 @@ import classes from "../../CSS/PostCSS/CreatePost.module.css";
 export function CreatePost() {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
-  const [token] = useAuth();
+  const [token, role] = useAuth();
   const [tags, setTags] = useState("");
   const queryClient = useQueryClient();
 
@@ -43,6 +43,10 @@ export function CreatePost() {
         </p>
       </div>
     );
+
+  if (role !== "admin") {
+    return <>Enjoy The Blog</>;
+  }
   return (
     <div className={classes.container}>
       <form onSubmit={handleSubmit}>
