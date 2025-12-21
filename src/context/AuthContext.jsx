@@ -13,6 +13,8 @@ export const AuthContextProvider = ({ children }) => {
     return localStorage.getItem("token") || null;
   });
 
+  const role = token ? jwtDecode(token).role : null;
+  console.log(role);
   // Whenever token changes, update localStorage
   const setToken = (newToken) => {
     if (newToken) {
@@ -40,7 +42,7 @@ export const AuthContextProvider = ({ children }) => {
   // };
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, role, setToken }}>
       {children}
     </AuthContext.Provider>
   );
@@ -51,7 +53,7 @@ AuthContextProvider.propTypes = {
 };
 
 export function useAuth() {
-  const { token, setToken } = useContext(AuthContext);
-  return [token, setToken];
+  const { token, role, setToken } = useContext(AuthContext);
+  return [token, role, setToken];
   // return useContext(AuthContext);
 }

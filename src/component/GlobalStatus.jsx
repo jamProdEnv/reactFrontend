@@ -9,20 +9,22 @@ import classes from "../CSS/GlobalStatus.module.css";
 import { useState } from "react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Diversity2Outlined } from "@mui/icons-material";
+import { Admin } from "./adminComponent/Admin";
 
 export function GlobalStatus() {
-  const [token, setToken] = useAuth();
+  const [token, role, setToken] = useAuth();
   const { socket, status, error } = useSocket();
   const [clicked, setClicked] = useState(false);
 
   const handleLogout = () => {
     socket.disconnect();
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     setToken(null);
   };
   if (token) {
     const { sub } = jwtDecode(token);
-
+    console.log(role);
     return (
       <div className={classes.container}>
         <nav>
@@ -56,7 +58,9 @@ export function GlobalStatus() {
                         </p>
                       </div>
                     </div>
-                    <User id={sub} />
+
+                    {role === "admin" ? <Admin id={sub} /> : <User id={sub} />}
+                    {/* <Admin id={sub} /> */}
                   </li>
                   <li>
                     <Link to={"/account"}>Account</Link>

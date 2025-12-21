@@ -12,6 +12,10 @@ import { LandingPage } from "./component/LandingPage";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
 import { GlobalFooter } from "./component/GlobalFooter";
+import { AdminSignup } from "./pages/adminPages/AdminSignup";
+import { AdminLogin } from "./pages/adminPages/AdminLogin";
+import { AdminPage } from "./pages/adminPages/AdminPage";
+import { AdminContextProvider } from "./context/AdminContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -52,6 +56,20 @@ function App() {
           path: "/login",
           element: <Login />,
         },
+        {
+          path: "/_Q8f3aZk/admin",
+          element: <AdminPage />,
+        },
+
+        {
+          path: "/_A9x2LmP/adminSignup",
+          element: <AdminSignup />,
+        },
+
+        {
+          path: "/_Q8f4ZkN/adminLogin",
+          element: <AdminLogin />,
+        },
       ],
     },
   ]);
@@ -60,11 +78,13 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
-          <SocketIOContextProvider>
-            <UserContextProvider>
-              <RouterProvider router={router} />
-            </UserContextProvider>
-          </SocketIOContextProvider>
+          <AdminContextProvider>
+            <SocketIOContextProvider>
+              <UserContextProvider>
+                <RouterProvider router={router} />
+              </UserContextProvider>
+            </SocketIOContextProvider>
+          </AdminContextProvider>
         </AuthContextProvider>
       </QueryClientProvider>
     </>

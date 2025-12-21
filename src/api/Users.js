@@ -23,9 +23,8 @@ export const login = async ({ username, password }) => {
       body: JSON.stringify({ username, password }),
     }
   );
-  console.log("Info");
   if (!res.ok) throw new Error("Failed to login");
-
+  console.log("Login Successful.");
   return await res.json();
 };
 

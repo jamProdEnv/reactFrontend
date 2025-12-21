@@ -21,9 +21,7 @@ export function GlobalHeader() {
               <li>
                 <Link to={"/resume"}>Profile</Link>
               </li>
-              <li>
-                <Link to={"/chat"}>Chat</Link>
-              </li>
+
               <li>
                 <Link to={"/blog"}>Blog</Link>
               </li>

@@ -11,7 +11,7 @@ export function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const [, setToken] = useAuth();
+  const [token, role, setToken] = useAuth();
   const { setUserContext } = userContext();
 
   const loginMutation = useMutation({

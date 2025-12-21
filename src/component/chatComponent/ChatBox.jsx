@@ -9,6 +9,7 @@ import { Close } from "@mui/icons-material";
 import { CropSquare } from "@mui/icons-material";
 import { useState } from "react";
 import { UserList } from "./UserList";
+import { useAdmin } from "../../context/AdminContext";
 
 export function ChatBox({
   messages,
@@ -18,6 +19,7 @@ export function ChatBox({
   users,
 }) {
   const { username } = userContext();
+  const { adminUsername } = useAdmin();
   const [clicked, setClicked] = useState(false);
   const [minimize, setMinimized] = useState(false);
 
@@ -28,15 +30,14 @@ export function ChatBox({
   return (
     <>
       <div className={classes.chatboxMain}>
-        {/* {!clicked && ( */}
         <button
           className={classes.chatboxIconButton}
           onClick={() => {
-            if (!username) {
+            if (!username && !adminUsername) {
               alert("Please Create a temporary account to chat.");
               return;
             }
-            if (username && !clicked) {
+            if ((username || adminUsername) && !clicked) {
               {
                 /*O P E N S  T H E  C H A T B O X */
               }
@@ -49,37 +50,11 @@ export function ChatBox({
           <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
         </button>
 
-        {minimize && clicked && (
-          <div className={classes.chatbox}>
-            <div className={classes.chatboxHeader}>
-              <div className={classes.chatboxButtonDiv}>
-                <div className={classes.chatboxButtons}>
-                  {/* <button
-                    className={classes.chatboxOpen}
-                    onClick={() => setMinimized(false)}
-                  >
-                    <CropSquare />
-                  </button>
-                  
-
-                  <button
-                    className={classes.chatboxClose}
-                    onClick={() => setClicked(false)}
-                  >
-                    <Close />
-                  </button> */}
-                  <h3 className={classes.chatboxH3}>{displayedUser}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Don't Render The Box Only The Button */}
-        {clicked && !username && (
+        {clicked && !username && !adminUsername && (
           <button
             className={classes.chatboxIconButton}
-            onClick={() => setClicked(true)}
+            onClick={() => setClicked(false)}
           >
             <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
           </button>
@@ -107,7 +82,7 @@ export function ChatBox({
                   >
                     <Close />
                   </button> */}
-                  <h3>
+                  <h3 className={classes.userList}>
                     <UserList onSelectUser={onSelectUser} users={users} />
                   </h3>
                 </div>

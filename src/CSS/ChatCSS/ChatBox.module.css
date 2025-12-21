@@ -6,7 +6,8 @@
   right: 20px;
   width: 400px;
   margin: auto;
-  background-color: white;
+  background-color: black;
+  z-index: 10000;
 }
 
 .chatbox {
@@ -34,6 +35,10 @@
   overflow: auto;
   margin: auto;
   margin-top: 0.5em;
+}
+
+.userList {
+  width: 100%;
 }
 
 .chatboxML {
