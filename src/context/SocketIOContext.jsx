@@ -21,7 +21,7 @@ export const SocketIOContextProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       // const socket = io(import.meta.env.VITE_BACKEND_PROD_URL, {
-      const socket = io(import.meta.env.VITE_LOCAL_BACKEND_URL, {
+      const socket = io(import.meta.env.VITE_BACKEND_URL, {
         query: window.location.search.substring(1),
         auth: { token },
       });

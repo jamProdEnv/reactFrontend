@@ -1,13 +1,19 @@
-import { useState } from "react";
-import { CreatePost } from "../../component/blogComponent/CreatePost";
-import { PostFilter } from "../../component/blogComponent/PostFilter";
-import { PostSorting } from "../../component/blogComponent/PostSorting";
-import { BlogHeader } from "../../component/blogComponent/BlogHeader";
-import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "../../api/Posts";
-import { Post } from "../../component/blogComponent/Post";
+import { useState, lazy, Suspense, memo } from "react";
+// import { CreatePost } from "../../component/blogComponent/CreatePost";
+// import { PostFilter } from "../../component/blogComponent/PostFilter";
+// import { PostSorting } from "../../component/blogComponent/PostSorting";
+// import { BlogHeader } from "../../component/blogComponent/BlogHeader";
+// import { useQuery } from "@tanstack/react-query";
+// import { getPosts } from "../../api/Posts";
+// import { Post } from "../../component/blogComponent/Post";
 import { PostList } from "../../component/blogComponent/PostList";
 import classes from "../../CSS/BlogDisplay.module.css";
+
+const CreatePost = lazy(() => import("./CreatePost"));
+const PostFilter = lazy(() => import("./PostFilter"));
+const PostSorting = lazy(() => import("./PostSorting"));
+const BlogHeader = lazy(() => import("./BlogHeader"));
+// const PostList = lazy(() => import("./PostList"));
 export function BlogDisplay({
   posts,
   author,
@@ -26,10 +32,14 @@ export function BlogDisplay({
     <>
       <div className={classes.container}>
         <div className={`${classes.tile} ${classes.header}`}>
-          <BlogHeader />
+          <Suspense fallback={null}>
+            <BlogHeader />
+          </Suspense>
         </div>
         <div className={`${classes.tile} ${classes.createPosts}`}>
-          <CreatePost />
+          <Suspense fallback={null}>
+            <CreatePost />
+          </Suspense>
         </div>
         <div className={classes.filter}>
           <section>
@@ -67,7 +77,9 @@ export function BlogDisplay({
           </section>
         </div>
         <div className={`${classes.tile} ${classes.posts}`}>
-          <PostList posts={posts} />
+          <Suspense fallback={null}>
+            <PostList posts={posts} />
+          </Suspense>
         </div>
 
         {/* <div className={classes.blogDisplayContainer}>
@@ -120,3 +132,6 @@ export function BlogDisplay({
     </>
   );
 }
+
+// export default BlogDisplay;
+export default memo(BlogDisplay);

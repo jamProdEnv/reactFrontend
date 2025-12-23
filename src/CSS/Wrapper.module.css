@@ -1,24 +1,29 @@
 .container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background-color: skyblue;
   border: 3px solid purple;
   height: 100%;
   margin: 0;
-  width: fit-content;
+  width: 100%;
 }
 
 header {
   position: sticky;
   top: 0;
+  z-index: 10000; /* FIX */
 }
 
 main {
-  display: flex;
-  overflow: hidden;
+  display: block;
+  flex: 1;
+  height: 100vh;
+  background-color: white;
 }
 
 footer {
-  position: sticky;
-  bottom: 0;
+  display: block;
+  height: auto;
+  position: static;
 }

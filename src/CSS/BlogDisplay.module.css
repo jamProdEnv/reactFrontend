@@ -1,103 +1,35 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(5, auto);
-  grid-gap: 0.25em;
-  margin: 0 auto;
-  background: black;
-  border: 3px solid blue;
-  height: auto;
-  /* overflow: hidden; */
-}
-
-.container > * {
-  background: white;
-}
-
-.blogDisplayContainer {
-  display: flex;
-  /* width: 100%;
-  max-width: 70%; */
-  padding: 1em;
+  max-width: 800px;
+  border: 1px solid yellowgreen;
   height: 100vh;
-  text-align: center;
-  border: 3px solid blue;
-  /* margin: auto; */
-  position: relative;
-  overflow: hidden;
-}
-
-.header {
-  grid-column: 1 / -1;
-  grid-row: span 1;
-}
-
-.createPosts {
-  grid-column: 2 / 4;
-  grid-row: 2 / 4;
-}
-
-.filter {
-  grid-column: 2 / 4;
-  grid-row: 4/ 5;
-}
-
-.posts {
-  grid-column: 2 / 4;
-  grid-row: 5;
-  border: 3px solid blue;
-}
-
-.blogDisplaySection {
-  display: flex;
-  /* width: 100%; */
+  background-color: white;
   margin: auto;
-  justify-content: space-evenly;
-  align-self: center;
-  border: 3px solid blue;
-  align-items: baseline;
-}
-
-.blogDisplayMain {
-  /* width: 100%;
-  max-width: 100%; */
-  display: flex;
-}
-
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .modalBody {
-  position: fixed;
+  position: absolute;
   top: 3em;
-  bottom: 65%;
-  right: 30%;
-  left: 30%;
-  padding: 2em 1em;
-  background-color: white;
-  overflow: auto;
-  border-radius: 0.5em;
+  left: -19%;
+  right: 101%;
+  bottom: 70%;
+  border: 1px solid yellowgreen;
+  display: flex;
+  flex-direction: column;
 }
 
 .modalClose {
-  position: absolute;
-  top: 0.3em;
-  right: 0.3em;
-  padding: 0.3em;
   cursor: pointer;
+  position: absolute;
+  top: 0.1em;
+  right: 0.1em;
   font-size: 2em;
-  height: 3em;
+  height: 1em;
   width: 1em;
   text-indent: 10em;
   overflow: hidden;
   border: 0;
-  background-color: transparent;
+  background-color: white;
 }
 
 .modalClose::after {
@@ -108,65 +40,15 @@
   text-indent: 0;
   content: "\00D7";
 }
-.posts {
-  max-height: 100vh;
-  overflow-y: auto;
-}
 
 @media screen and (min-width: 800px) {
-}
-@media screen and (max-width: 799px) {
   .container {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(3, auto);
-    grid-gap: 0.5em;
-    height: auto;
-    /* height: 10vh; */
-    /* margin: 0 auto; */
-    background: black;
-    border: 3px solid blue;
-    padding: 0;
+    max-width: 1000px;
   }
+}
 
-  .blogDisplayContainer {
-    display: block;
-    text-align: center;
-    border: 3px solid blue;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .blogDisplaySection {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    justify-content: space-evenly;
-    align-self: center;
-    border: 3px solid blue;
-    align-items: baseline;
-    overflow-x: hidden;
-  }
-
-  .createPosts {
-    grid-column: 1 / -1;
-    grid-row: span 1;
-  }
-
-  .posts {
-    grid-column: 1 / -1;
-    grid-row: 2 / 3;
-  }
-
-  .filter {
-    display: none;
-    height: 0;
-  }
-
-  .header {
-    grid-column: 1 / -1;
-    grid-row: 3 / 4;
-    position: sticky;
-    bottom: 0;
+@media screen and (min-width: 1000px) {
+  .container {
+    max-width: 1080px;
   }
 }

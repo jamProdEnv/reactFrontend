@@ -1,4 +1,3 @@
-.postFilterContainer {
-  display: block;
-  border: 3px solid blue;
+.container {
+  border: 1px solid red;
 }
