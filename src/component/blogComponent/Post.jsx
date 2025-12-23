@@ -14,8 +14,8 @@ export function Post({ title, contents, author }) {
       <div className={classes.author}>
         {author && (
           <div>
-            Written by <Admin id={author} />
-            {/* Written by {author.username} */}
+            {/* Written by <Admin id={author} /> */}
+            Written by {author.username}
           </div>
         )}
 
