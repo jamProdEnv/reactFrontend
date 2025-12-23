@@ -16,8 +16,12 @@ const BlogHeader = lazy(() => import("./BlogHeader"));
 // const PostList = lazy(() => import("./PostList"));
 export function BlogDisplay({
   posts,
-  author,
-  onAuthorChange,
+  // author,
+  // onAuthorChange,
+  searchBy,
+  query,
+  onSearchByChange,
+  onQueryChange,
   sortBy,
   sortOrder,
   onSortChange,
@@ -56,9 +60,13 @@ export function BlogDisplay({
                       close
                     </button>
                     <PostFilter
-                      field="searchBy"
-                      value={author}
-                      onChange={onAuthorChange}
+                      // field="searchBy"
+                      // value={author}
+                      // onChange={onAuthorChange}
+                      searchBy={searchBy}
+                      query={query}
+                      onSearchByChange={onSearchByChange}
+                      onQueryChange={onQueryChange}
                     />
 
                     <PostSorting
