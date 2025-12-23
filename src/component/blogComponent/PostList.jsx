@@ -6,9 +6,9 @@ export function PostList({ posts = [] }) {
   return (
     <div className={classes.container}>
       {posts.map((post) => (
-        <p key={post._id}>
+        <div key={post._id}>
           <Post {...post} />
-        </p>
+        </div>
       ))}
     </div>
   );

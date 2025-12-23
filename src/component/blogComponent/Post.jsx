@@ -12,11 +12,18 @@ export function Post({ title, contents, author }) {
         <p>"{contents}"</p>
       </div>
       <div className={classes.author}>
-        {role === "admin" && author && (
-          <p>
+        {author && (
+          <div>
             Written by <Admin id={author} />
-          </p>
+            {/* Written by {author.username} */}
+          </div>
         )}
+
+        {/* {role === "user" && author && (
+          <div>
+            Written by <User id={author} />
+          </div>
+        )} */}
       </div>
     </article>
   );

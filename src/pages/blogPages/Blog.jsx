@@ -15,14 +15,23 @@ const BlogDisplay = lazy(
 );
 export function Blog() {
   const [author, setAuthor] = useState("");
+  const [searchBy, setSearchBy] = useState(""); // "author" | "tag"
+  const [query, setQuery] = useState(""); // text input
+
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("ascending");
 
   // const queryKey = ["posts", { author, sortBy, sortOrder }];
+  // const postQuery = useQuery({
+  //   queryKey: ["posts", { author, sortBy, sortOrder }],
+  //   // queryKey: queryKey,
+  //   queryFn: () => getPosts({ author, sortBy, sortOrder }),
+  //   keepPreviousData: true,
+  // });
+
   const postQuery = useQuery({
-    queryKey: ["posts", { author, sortBy, sortOrder }],
-    // queryKey: queryKey,
-    queryFn: () => getPosts({ author, sortBy, sortOrder }),
+    queryKey: ["posts", { searchBy, query, sortBy, sortOrder }],
+    queryFn: () => getPosts({ searchBy, query, sortBy, sortOrder }),
     keepPreviousData: true,
   });
 
@@ -39,16 +48,23 @@ export function Blog() {
     <>
       <div className={classes.container}>
         <Suspense fallback={<p>Loading blog…</p>}>
-          <BlogDisplay
+          {/* <BlogDisplay
             posts={posts}
             author={author}
             onAuthorChange={setAuthor}
             sortBy={sortBy}
             sortOrder={sortOrder}
-            // onSortChange={(field, order) => {
-            //   setSortBy(field);
-            //   setSortOrder(order);
-            // }}
+           
+            onSortChange={handleSortChange}
+          /> */}
+          <BlogDisplay
+            posts={posts}
+            searchBy={searchBy}
+            query={query}
+            onSearchByChange={setSearchBy}
+            onQueryChange={setQuery}
+            sortBy={sortBy}
+            sortOrder={sortOrder}
             onSortChange={handleSortChange}
           />
         </Suspense>

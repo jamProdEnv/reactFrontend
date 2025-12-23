@@ -26,6 +26,7 @@ export function CreatePost() {
       queryClient.invalidateQueries(["queries"]);
       setTitle("");
       setContents("");
+      setTags("");
     },
     onError: () => alert("Cannot Create Post."),
   });
