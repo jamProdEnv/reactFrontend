@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, memo } from "react";
+import { useState, lazy, Suspense, memo, useEffect } from "react";
 // import { CreatePost } from "../../component/blogComponent/CreatePost";
 // import { PostFilter } from "../../component/blogComponent/PostFilter";
 // import { PostSorting } from "../../component/blogComponent/PostSorting";
@@ -8,6 +8,7 @@ import { useState, lazy, Suspense, memo } from "react";
 // import { Post } from "../../component/blogComponent/Post";
 import { PostList } from "../../component/blogComponent/PostList";
 import classes from "../../CSS/BlogDisplay.module.css";
+import { getPosts } from "../../api/Posts";
 
 const CreatePost = lazy(() => import("./CreatePost"));
 const PostFilter = lazy(() => import("./PostFilter"));
@@ -15,13 +16,14 @@ const PostSorting = lazy(() => import("./PostSorting"));
 const BlogHeader = lazy(() => import("./BlogHeader"));
 // const PostList = lazy(() => import("./PostList"));
 export function BlogDisplay({
-  posts,
+  // posts,
   // author,
   // onAuthorChange,
   searchBy,
   query,
   onSearchByChange,
   onQueryChange,
+  onTagSelect,
   sortBy,
   sortOrder,
   onSortChange,
@@ -31,13 +33,44 @@ export function BlogDisplay({
   //   queryFn: () => getPosts({ author, sortBy, sortOrder }),
   // });
   const [showModal, setShowModal] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [selectedTag, setSelectedTag] = useState("");
 
+  const handleSelectTag = (tag) => {
+    onSearchByChange("tag");
+    onQueryChange(tag);
+    setSelectedTag(tag);
+  };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const queryParams = {};
+
+        if (selectedTag && selectedTag !== "blog") {
+          queryParams.tag = selectedTag;
+        } else if (searchBy && query) {
+          queryParams[searchBy] = query;
+        }
+
+        // if (sortBy) queryParams.sortBy = sortBy;
+        // if (sortOrder) queryParams.sortOrder = sortOrder;
+
+        const data = await getPosts(queryParams);
+        setPosts(data);
+      } catch (err) {
+        console.error("Error fetching posts", err);
+      }
+    };
+
+    fetchPosts();
+  }, [selectedTag, searchBy, query, sortBy, sortOrder]);
   return (
     <>
       <div className={classes.container}>
         <div className={`${classes.tile} ${classes.header}`}>
           <Suspense fallback={null}>
-            <BlogHeader />
+            <BlogHeader onTagSelect={handleSelectTag} />
           </Suspense>
         </div>
         <div className={`${classes.tile} ${classes.createPosts}`}>

@@ -19,7 +19,7 @@ export function CreatePost() {
       createPost(token, {
         title,
         contents,
-        tags: tags.split(",").map((t) => t.trim()),
+        tags: ["blog", ...tags.split(",").map((t) => t.trim())],
       }),
     //  If The Creation Is Successful, Fetch The Posts So They Can Be Posted To The UI.
     onSuccess: () => {
