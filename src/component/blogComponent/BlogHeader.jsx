@@ -4,14 +4,23 @@ import classes from "../../CSS/BlogHeader.module.css";
 import { Link } from "react-router-dom";
 import { User } from "../chatComponent/User";
 import { Admin } from "../adminComponent/Admin";
-export function BlogHeader() {
+export function BlogHeader({ onTagSelect }) {
   const [token, role] = useAuth();
+  const tags = [
+    "blog",
+    "informational",
+    "wild life",
+    "personal",
+    "technology",
+    "casual",
+  ];
+
   if (token) {
     const { sub } = jwtDecode(token);
     return (
       <>
         <header className={classes.header}>
-          <nav className={classes.nav}>
+          {/* <nav className={classes.nav}>
             <ul className={classes.links}>
               <li>
                 <a href="#">Blog</a>
@@ -31,6 +40,24 @@ export function BlogHeader() {
               <li>
                 <a href="#">Casual</a>
               </li>
+            </ul>
+          </nav> */}
+          <nav className={classes.nav}>
+            <ul className={classes.links}>
+              {tags.map((tag) => (
+                <li
+                  key={tag}
+                  onClick={() => {
+                    onTagSelect(tag);
+                    console.log("Selected tag:", tag); // logs the tag clicked}
+                  }}
+                  className={classes.tag}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {tag}
+                </li>
+              ))}
             </ul>
           </nav>
         </header>
