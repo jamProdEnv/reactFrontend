@@ -1,4 +1,5 @@
 import { useState, lazy, Suspense, memo, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 // import { CreatePost } from "../../component/blogComponent/CreatePost";
 // import { PostFilter } from "../../component/blogComponent/PostFilter";
 // import { PostSorting } from "../../component/blogComponent/PostSorting";
@@ -33,7 +34,7 @@ export function BlogDisplay({
   //   queryFn: () => getPosts({ author, sortBy, sortOrder }),
   // });
   const [showModal, setShowModal] = useState(false);
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   const [selectedTag, setSelectedTag] = useState("");
 
   const handleSelectTag = (tag) => {
@@ -42,29 +43,37 @@ export function BlogDisplay({
     setSelectedTag(tag);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const queryParams = {};
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const queryParams = {};
 
-        if (selectedTag && selectedTag !== "blog") {
-          queryParams.tag = selectedTag;
-        } else if (searchBy && query) {
-          queryParams[searchBy] = query;
-        }
+  //       if (selectedTag && selectedTag !== "blog") {
+  //         queryParams.tag = selectedTag;
+  //       } else if (searchBy && query) {
+  //         queryParams[searchBy] = query;
+  //       }
 
-        // if (sortBy) queryParams.sortBy = sortBy;
-        // if (sortOrder) queryParams.sortOrder = sortOrder;
+  //       const data = await getPosts(queryParams);
+  //       setPosts(data);
+  //     } catch (err) {
+  //       console.error("Error fetching posts", err);
+  //     }
+  //   };
 
-        const data = await getPosts(queryParams);
-        setPosts(data);
-      } catch (err) {
-        console.error("Error fetching posts", err);
-      }
-    };
-
-    fetchPosts();
-  }, [selectedTag, searchBy, query, sortBy, sortOrder]);
+  //   fetchPosts();
+  // }, [selectedTag, searchBy, query, sortBy, sortOrder]);
+  const { data: posts = [] } = useQuery({
+    queryKey: ["posts", selectedTag, searchBy, query, sortBy, sortOrder],
+    queryFn: () =>
+      getPosts(
+        selectedTag && selectedTag !== "blog"
+          ? { tag: selectedTag }
+          : searchBy && query
+            ? { [searchBy]: query }
+            : undefined
+      ),
+  });
   return (
     <>
       <div className={classes.container}>
