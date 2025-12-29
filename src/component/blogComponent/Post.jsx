@@ -24,12 +24,17 @@ export function Post({ title, contents, author, tags }) {
             Written by <User id={author} />
           </div>
         )} */}
-        <div>
-          {tags !== "" || tags !== null ? (
-            <span>tags: {...tags}</span>
+        <div className={classes.tags}>
+          {/* {tags !== "" || tags !== null ? (
+            <span>tags: {tags?.split(" ")}</span>
           ) : (
             <span>tags: </span>
-          )}
+          )} */}
+          {tags?.map((tag) => (
+            <span key={tag} className={classes.tag}>
+              #{tag}
+            </span>
+          ))}
         </div>
       </div>
     </article>
