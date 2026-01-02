@@ -10,6 +10,7 @@ import { CropSquare } from "@mui/icons-material";
 import { useState } from "react";
 import { UserList } from "./UserList";
 import { useAdmin } from "../../context/AdminContext";
+import { useAuth } from "../../context/AuthContext";
 
 export function ChatBox({
   messages,
@@ -22,66 +23,73 @@ export function ChatBox({
   const { adminUsername } = useAdmin();
   const [clicked, setClicked] = useState(false);
   const [minimize, setMinimized] = useState(false);
+  const [token] = useAuth();
 
   {
     /* Floating Chat Icon */
   }
+  const handleChatClick = () => {
+    if (!token) {
+      alert("Cannot open chat: you are logged out.");
+      return;
+    }
+
+    if (!username && !adminUsername) {
+      alert("Cannot open chat: please create a temporary account.");
+      return;
+    }
+
+    // If everything is fine, toggle the chatbox
+    setClicked(!clicked);
+  };
 
   return (
     <>
       <div className={classes.chatboxMain}>
         <button
           className={classes.chatboxIconButton}
-          onClick={() => {
-            if (!username && !adminUsername) {
-              alert("Please Create a temporary account to chat.");
-              return;
-            }
-            if ((username || adminUsername) && !clicked) {
-              {
-                /*O P E N S  T H E  C H A T B O X */
-              }
-              setClicked(true);
-            } else {
-              setClicked(false);
-            }
-          }}
+          onClick={
+            handleChatClick
+            // () => {
+            // if (!username && !adminUsername) {
+            //   alert("Please Create a temporary account to chat.");
+            //   return;
+            // }
+            // if ((username || adminUsername) && !clicked) {
+            //   {
+            /*O P E N S  T H E  C H A T B O X */
+            //     }
+            //     setClicked(true);
+            //   } else {
+            //     setClicked(false);
+            //   }
+            // }
+          }
         >
           <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
         </button>
 
         {/* Don't Render The Box Only The Button */}
-        {clicked && !username && !adminUsername && (
-          <button
-            className={classes.chatboxIconButton}
-            onClick={() => setClicked(false)}
-          >
-            <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
-          </button>
-        )}
+        {(clicked && !username && !adminUsername) ||
+          (!token && (
+            <button
+              className={classes.chatboxIconButton}
+              onClick={
+                // () => setClicked(false)
+                handleChatClick
+              }
+            >
+              <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
+            </button>
+          ))}
 
-        {clicked && !minimize && (
+        {clicked && !minimize && token && (
           <div
             className={`${classes.chatbox} ${classes.chatboxMinimizedContainer}`}
           >
             <header className={classes.chatboxHeader}>
-              {/* F L E X  T H E  H E A D ER  */}
               <div className={classes.chatboxButtonDiv}>
                 <div className={classes.chatboxButtons}>
-                  {/* <button
-                    className={classes.chatboxMinimize}
-                    onClick={() => setMinimized(true)}
-                  >
-                    <Minimize style={{ fontisze: 30, color: "black" }} />
-                  </button>
-                 
-                 
-                  <button
-                    className={classes.chatboxClose}
-                    onClick={() => setClicked(false)}
-                  >
-                    <Close />
-                  </button> */}
                   <h3 className={classes.userList}>
                     <UserList onSelectUser={onSelectUser} users={users} />
                   </h3>
