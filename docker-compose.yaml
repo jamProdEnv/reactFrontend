@@ -6,7 +6,11 @@ services:
         VITE_BACKEND_URL: mongodb://root:example@mongo:27017/chat
       ports:
         - "30000:80"
-    networks: 
+        - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
       - chat-network
 network:
   chat-network:
