@@ -17,3 +17,7 @@
 .author {
   text-indent: 3em;
 }
+
+.tags > * {
+  margin-left: 1em;
+}

@@ -3,7 +3,7 @@ import { User } from "../chatComponent/User";
 import classes from "../../CSS/Post.module.css";
 import { useAuth } from "../../context/AuthContext";
 import { Admin } from "../adminComponent/Admin";
-export function Post({ title, contents, author }) {
+export function Post({ title, contents, author, tags }) {
   const [, role] = useAuth();
   return (
     <article className={classes.container}>
@@ -24,6 +24,18 @@ export function Post({ title, contents, author }) {
             Written by <User id={author} />
           </div>
         )} */}
+        <div className={classes.tags}>
+          {/* {tags !== "" || tags !== null ? (
+            <span>tags: {tags?.split(" ")}</span>
+          ) : (
+            <span>tags: </span>
+          )} */}
+          {tags?.map((tag) => (
+            <span key={tag} className={classes.tag}>
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
     </article>
   );
