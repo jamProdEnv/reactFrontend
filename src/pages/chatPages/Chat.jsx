@@ -1,8 +1,10 @@
 import { ChatRoom } from "../../component/chatComponent/ChatRoom";
 import { Header } from "../../component/chatComponent/Header";
 import { Status } from "../../component/chatComponent/Status";
+import { MobileChatDisplay } from "../../component/mobileChatComponent/MobileChatDisplay";
 import { useSocket } from "../../context/SocketIOContext";
 import classes from "../../CSS/ChatCSS/Chat.module.css";
+import { MobileChat } from "./MobileChat";
 
 export function Chat() {
   const { status } = useSocket();
@@ -29,6 +31,7 @@ export function Chat() {
           <Status />
         </header>
       )} */}
+      <MobileChatDisplay />
     </div>
   );
 }

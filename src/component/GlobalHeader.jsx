@@ -25,6 +25,9 @@ export function GlobalHeader() {
               <li>
                 <Link to={"/blog"}>Blog</Link>
               </li>
+              <li id={"mobile"} className={classes.mobile}>
+                <Link to={"/chat"}>Chat</Link>
+              </li>
             </ul>
           </nav>
         </div>
