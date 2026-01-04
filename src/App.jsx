@@ -16,6 +16,7 @@ import { AdminSignup } from "./pages/adminPages/AdminSignup";
 import { AdminLogin } from "./pages/adminPages/AdminLogin";
 import { AdminPage } from "./pages/adminPages/AdminPage";
 import { AdminContextProvider } from "./context/AdminContext";
+import { MobileChat } from "./pages/chatPages/MobileChat";
 
 function App() {
   const queryClient = new QueryClient();
@@ -37,7 +38,7 @@ function App() {
         },
         {
           path: "/chat",
-          element: <Chat />,
+          element: <MobileChat />,
         },
         {
           path: "/blog",

@@ -1,0 +1,22 @@
+.container {
+  border: 1px solid black;
+  display: flex;
+  margin-top: 0;
+}
+
+.userBlock {
+  flex: 1;
+  border: 1px solid black;
+}
+
+.messagesBlock {
+  flex: 2;
+  border: 1px solid black;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    display: none;
+  }
+}
