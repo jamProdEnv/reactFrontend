@@ -5,7 +5,6 @@
   width: 100%;
   margin: 0;
   background-color: white;
-  font-size: x-small;
 }
 
 .header h1 {
@@ -47,6 +46,12 @@
 
 .status {
   display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    font-size: x-small;
+  }
 }
 
 @media screen and (min-width: 800px) {
