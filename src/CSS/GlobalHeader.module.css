@@ -40,6 +40,12 @@
 .links li > a {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.status {
+  display: none;
 }
 
 @media screen and (min-width: 800px) {
@@ -52,15 +58,16 @@
     padding-right: 1em;
   }
 
-  #mobile {
+  .mobile {
     display: none;
   }
+
+  /* .status {
+    display: block;
+  } */
 }
 
 @media screen and (min-width: 1000px) {
-  .header {
-  }
-
   .div1 {
     display: flex;
     justify-content: space-between;
@@ -98,5 +105,9 @@
 
   .mobile {
     display: none;
+  }
+
+  .status {
+    display: block;
   }
 }

@@ -75,7 +75,7 @@ export function BlogHeader({ onTagSelect }) {
     );
   }
   return (
-    <div>
+    <div className={classes.login}>
       <Link to={"/login"}>Log In</Link> | <Link to={"/signup"}>Sign Up</Link>
       <h3>Blog</h3>
     </div>

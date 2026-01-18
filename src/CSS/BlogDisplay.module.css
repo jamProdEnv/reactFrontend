@@ -59,7 +59,7 @@
 }
 
 .header {
-  display: none;
+  display: block;
   width: 100%;
   padding: 0.5em 1.5em;
   position: sticky;
