@@ -4,11 +4,13 @@
 .header {
   width: 100%;
   margin: 0;
+  background-color: white;
 }
 
 .header h1 {
   font-family: "Permanent Marker";
   letter-spacing: 1rem;
+  color: navy;
 }
 
 .div1 {
@@ -16,9 +18,10 @@
 }
 
 .div2 {
-  border: 1px solid green;
   width: 100%;
   margin: 0;
+  background-color: blueviolet;
+  padding: 0.5em 0 0.5em 0;
 }
 
 .links {
@@ -40,15 +43,9 @@
 }
 
 @media screen and (min-width: 800px) {
-  .header {
-    background-color: transparent;
-  }
-
   .div1 {
     display: flex;
     justify-content: space-between;
-    border: 1px solid green;
-    background-color: rgba(235, 238, 240, 0.6);
     color: white;
     width: 100%;
     padding-left: 1em;
@@ -62,15 +59,14 @@
 
 @media screen and (min-width: 1000px) {
   .header {
-    background-color: transparent;
   }
 
   .div1 {
     display: flex;
     justify-content: space-between;
-    border: 1px solid green;
-    background-color: rgba(225, 230, 235, 0.75);
-    backdrop-filter: blur(10px);
+
+    /* background-color: rgba(225, 230, 235, 0.75);
+    backdrop-filter: blur(10px); */
     color: #2e2e2e;
     width: 100%;
     margin-bottom: 1em;

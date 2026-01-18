@@ -1,18 +1,107 @@
 .container {
-  border: 1px solid black;
   display: flex;
-  margin-top: 0;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  height: 100vh;
 }
 
 .userBlock {
-  flex: 1;
-  border: 1px solid black;
+  width: 100%;
+  height: 100vh;
+  display: block;
 }
 
+/* .closeUserBlock {
+  display: none;
+} */
+
 .messagesBlock {
-  flex: 2;
-  border: 1px solid black;
+  width: 100%;
+  display: block;
+  height: 100vh;
+}
+
+.closeMessagesBlock {
+  display: none;
+}
+
+.messageBox {
+  height: 80vh;
+  margin: 0;
+}
+
+.message {
+  display: block;
+  width: 100%;
+}
+
+.login {
+  display: block;
+  width: 100%;
+  padding: 0.5em 1.5em;
+}
+
+.login > a {
+  text-decoration: underline;
+  letter-spacing: 0.2rem;
+  color: blue;
+}
+
+/* .closeUserBlock {
+  display: none;
+} */
+
+/* .userBlock {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+} */
+
+.closeUserBlock {
+  /* transform: translateX(-100%); */
+  display: none;
+}
+
+.messagesBlockHeader {
+  display: flex;
   margin-top: 0;
+  padding: 0 1em;
+}
+
+.messagesBlockHeader > * {
+  margin-right: 1em;
+  margin-top: 0;
+}
+
+.return:hover {
+  cursor: pointer;
+}
+
+.input {
+  height: 20vh;
+  margin: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+  .container {
+    display: flex;
+  }
+
+  .userBlock {
+    display: block;
+    flex: 1;
+    border: 1px solid black;
+  }
+
+  .messagesBlock {
+    display: block;
+    flex: 2;
+    border: 1px solid black;
+    margin-top: 0;
+    z-index: 1000000000;
+    background-color: white;
+  }
 }
 
 @media screen and (min-width: 1000px) {

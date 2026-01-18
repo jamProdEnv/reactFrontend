@@ -1,12 +1,12 @@
 .container {
   max-width: 800px;
-  border: 1px solid yellowgreen;
+  margin-top: 0;
   height: 100vh;
-  background-color: white;
   margin: auto;
   position: relative;
   opacity: 0;
   animation: fadeIn 0.8s ease 0.2s forwards;
+  border: 2px solid black;
 }
 
 @keyframes fadeIn {
@@ -15,48 +15,174 @@
   }
 }
 
+/* .header {
+  position: sticky;
+  top: 0;
+} */
+
+/* Implement This Later */
+.filterButton {
+  display: none;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+}
+
+.modalContainer {
+  width: 100%;
+}
+
+.modal {
+  width: 100%;
+}
+
 .modalBody {
-  position: absolute;
-  top: 3em;
-  left: -19%;
-  right: 101%;
-  bottom: 70%;
-  border: 1px solid yellowgreen;
+  width: 100%;
+  margin: 0;
+
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
 .modalClose {
-  cursor: pointer;
   position: absolute;
-  top: 0.1em;
-  right: 0.1em;
-  font-size: 2em;
-  height: 1em;
-  width: 1em;
-  text-indent: 10em;
-  overflow: hidden;
+  top: 0;
+  right: 0;
   border: 0;
-  background-color: white;
+  background-color: transparent;
 }
 
-.modalClose::after {
-  position: absolute;
-  line-height: 0.5;
-  top: 0.2em;
-  left: 0.1em;
-  text-indent: 0;
-  content: "\00D7";
+.hideFilterButton {
+  display: none;
+}
+
+.header {
+  display: none;
+  width: 100%;
+  padding: 0.5em 1.5em;
+  position: sticky;
+  top: 0px;
+  margin-top: 0;
+}
+
+.header > a {
+  text-decoration: underline;
+  letter-spacing: 0.2rem;
+  color: blue;
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    display: block;
+    margin-top: 0;
+    position: sticky;
+  }
+
+  .search {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 800px) {
   .container {
     max-width: 1000px;
   }
+
+  .header {
+    display: block;
+    position: sticky;
+    top: 125px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .modalBody {
+    position: absolute;
+    top: 3em;
+    left: -19%;
+    right: 101%;
+    bottom: 70%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modalClose {
+    cursor: pointer;
+    position: absolute;
+    top: 0.1em;
+    right: 0.1em;
+    font-size: 2em;
+    height: 1em;
+    width: 1em;
+    text-indent: 10em;
+    overflow: hidden;
+    border: 0;
+    background-color: white;
+  }
+
+  .modalClose::after {
+    position: absolute;
+    line-height: 0.5;
+    top: 0.2em;
+    left: 0.1em;
+    text-indent: 0;
+    content: "\00D7";
+  }
 }
 
 @media screen and (min-width: 1000px) {
   .container {
     max-width: 1080px;
+  }
+
+  .header {
+    display: block;
+    position: sticky;
+    top: 150px;
+    background-color: white;
+    margin-top: 0;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .modalBody {
+    position: absolute;
+    top: 3em;
+    left: -19%;
+    right: 101%;
+    bottom: 70%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modalClose {
+    cursor: pointer;
+    position: absolute;
+    top: 0.1em;
+    right: 0.1em;
+    font-size: 2em;
+    height: 1em;
+    width: 1em;
+    text-indent: 10em;
+    overflow: hidden;
+    border: 0;
+    background-color: white;
+  }
+
+  .modalClose::after {
+    position: absolute;
+    line-height: 0.5;
+    top: 0.2em;
+    left: 0.1em;
+    text-indent: 0;
+    content: "\00D7";
   }
 }

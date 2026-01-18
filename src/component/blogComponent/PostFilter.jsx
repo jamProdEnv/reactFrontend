@@ -47,22 +47,23 @@ export function PostFilter({
   );
   return (
     <div className={classes.container}>
-      {options.map((opt) => (
-        <label key={opt} className={classes.radioLabel}>
-          <input
-            type="checkbox"
-            // name={field}
-            // value={opt}
-            // checked={value === opt}
-            checked={searchBy === opt}
-            // onChange={() => handleRadioChange(opt)}
-            onChange={() => handleSelect(opt)}
-            className={classes.radioInput}
-          />
-          <span className={classes.radio}></span>
-          {opt}
-        </label>
-      ))}
+      <div className={classes.div1}>
+        {options.map((opt) => (
+          <label key={opt} className={classes.label}>
+            <input
+              type="checkbox"
+              // name={field}
+              // value={opt}
+              // checked={value === opt}
+              checked={searchBy === opt}
+              // onChange={() => handleRadioChange(opt)}
+              onChange={() => handleSelect(opt)}
+              className={classes.input}
+            />
+            <span className={classes.options}>{opt}</span>
+          </label>
+        ))}
+      </div>
 
       {/* <label htmlFor={`field - ${field}`}>{field}</label> */}
       {/* {value && ( */}

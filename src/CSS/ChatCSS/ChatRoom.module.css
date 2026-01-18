@@ -1,5 +1,5 @@
 .chatRoomContainer {
   display: block;
   height: 100vh;
-  z-index: 10;
+  z-index: 10000000000;
 }

@@ -1,29 +1,44 @@
+/* Ensure root can stretch */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
 .container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   /* background-color: skyblue; */
-  border: 3px solid purple;
-  height: 100%;
+  /* border: 3px solid purple; */
+  height: 100vh;
+  /* min-height: 100vh; */
   margin: 0;
   width: 100%;
+  /* background-color: green; */
+  overflow-y: auto;
 }
 
 header {
   position: sticky;
   top: 0;
   z-index: 10000; /* FIX */
+  flex-shrink: 0;
+  /* border-bottom: 2px solid black; */
 }
 
 main {
   display: block;
   flex: 1;
+  /* background-color: blue; */
   height: 100vh;
-  background-color: white;
+  /* overflow-y: auto; */
 }
 
 footer {
   display: block;
-  height: auto;
+  /* height: auto; */
   position: static;
+  /* background-color: red; */
+
+  flex-shrink: 0; /* never shrink */
 }

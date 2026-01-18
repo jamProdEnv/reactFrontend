@@ -7,7 +7,7 @@
   width: 400px;
   margin: auto;
   background-color: black;
-  z-index: 10000;
+  z-index: 10000000000;
 }
 
 .chatbox {
@@ -15,6 +15,7 @@
   border: 1px solid black;
   margin: 0;
   padding: 0;
+  z-index: 10000000000;
 }
 
 .chatboxContainer > :first-child {
@@ -35,6 +36,7 @@
   overflow: auto;
   margin: auto;
   margin-top: 0.5em;
+  z-index: 1000000000;
 }
 
 .userList {

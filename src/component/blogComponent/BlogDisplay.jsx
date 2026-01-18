@@ -71,7 +71,7 @@ export function BlogDisplay({
           ? { tag: selectedTag }
           : searchBy && query
             ? { [searchBy]: query }
-            : undefined
+            : undefined,
       ),
   });
   return (
@@ -87,11 +87,16 @@ export function BlogDisplay({
             <CreatePost />
           </Suspense>
         </div>
-        <div className={classes.filter}>
+        <div className={classes.search}>
           <section>
-            <button onClick={() => setShowModal(true)}>Filters</button>
+            <button
+              className={` ${classes.filterButton} ${showModal ? classes.hideFilterButton : classes.filterButton}`}
+              onClick={() => setShowModal(true)}
+            >
+              Filters
+            </button>
             {showModal && (
-              <section className={classes.blogDisplaySection}>
+              <section className={classes.modalContainer}>
                 <div className={classes.modal}>
                   <div className={classes.modalBackdrop}></div>
                   <div className={classes.modalBody}>
@@ -99,27 +104,31 @@ export function BlogDisplay({
                       onClick={() => setShowModal(false)}
                       className={classes.modalClose}
                     >
-                      close
+                      x
                     </button>
-                    <PostFilter
-                      // field="searchBy"
-                      // value={author}
-                      // onChange={onAuthorChange}
-                      searchBy={searchBy}
-                      query={query}
-                      onSearchByChange={onSearchByChange}
-                      onQueryChange={onQueryChange}
-                    />
+                    <div className={classes.filter}>
+                      <PostFilter
+                        // field="searchBy"
+                        // value={author}
+                        // onChange={onAuthorChange}
+                        searchBy={searchBy}
+                        query={query}
+                        onSearchByChange={onSearchByChange}
+                        onQueryChange={onQueryChange}
+                      />
+                    </div>
 
-                    <PostSorting
-                      fields={["createdAt", "updatedAt"]}
-                      value={sortBy}
-                      orderValue={sortOrder}
-                      onChange={(field) => onSortChange(field, sortOrder)}
-                      onOrderChange={(orderValue) =>
-                        onSortChange(sortBy, orderValue)
-                      }
-                    />
+                    <div className={classes.sorting}>
+                      <PostSorting
+                        fields={["createdAt", "updatedAt"]}
+                        value={sortBy}
+                        orderValue={sortOrder}
+                        onChange={(field) => onSortChange(field, sortOrder)}
+                        onOrderChange={(orderValue) =>
+                          onSortChange(sortBy, orderValue)
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               </section>

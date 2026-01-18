@@ -1,5 +1,33 @@
 .container {
-  border: 1px solid red;
+  display: block;
+
+  margin: 0;
+  width: 100%;
+}
+
+.div1 {
   display: flex;
-  flex-direction: column;
+  margin: 0;
+  width: 100%;
+}
+
+.div2 {
+  display: flex;
+  margin: 0;
+  width: 100%;
+}
+
+.div1 > .sortLabel {
+  margin: 0 1em 0 1em;
+}
+
+.div2 > .radioLabel {
+  margin: 0.25em 0.5em 0.25em 0.5em;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
 }

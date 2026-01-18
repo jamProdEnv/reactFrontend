@@ -18,7 +18,7 @@ export function BlogHeader({ onTagSelect }) {
   if (token) {
     const { sub } = jwtDecode(token);
     return (
-      <>
+      <div className={classes.container}>
         <header className={classes.header}>
           {/* <nav className={classes.nav}>
             <ul className={classes.links}>
@@ -55,7 +55,7 @@ export function BlogHeader({ onTagSelect }) {
                   role="button"
                   tabIndex={0}
                 >
-                  {tag}
+                  <span className={classes.tag}>{tag}</span>
                 </li>
               ))}
             </ul>
@@ -71,7 +71,7 @@ export function BlogHeader({ onTagSelect }) {
             Logged in as <User id={sub} />
           </h3>
         )}
-      </>
+      </div>
     );
   }
   return (

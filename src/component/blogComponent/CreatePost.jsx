@@ -39,14 +39,14 @@ export function CreatePost() {
   if (!token)
     return (
       <div className={classes.container}>
-        <p>
+        {/* <p>
           Please <Link to="/Login">Login</Link> To Create A Post.
-        </p>
+        </p> */}
       </div>
     );
 
   if (role !== "admin") {
-    return <>Enjoy The Blog</>;
+    return <></>;
   }
   return (
     <div className={classes.container}>

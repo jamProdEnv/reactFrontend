@@ -1,3 +1,27 @@
 .container {
-  border: 1px solid red;
+}
+
+.label {
+  display: flex;
+}
+
+.div1 {
+  display: flex;
+}
+
+.label {
+  margin: 0 0.5em 0 0.5em;
+}
+.div1 .options {
+  margin-top: 0;
+}
+
+.options {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    display: block;
+  }
 }
