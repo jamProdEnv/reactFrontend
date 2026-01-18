@@ -55,13 +55,14 @@ export function MobileUserList({ onSelectUser }) {
 
   if (role === "user") {
     return (
-      <main>
-        <ul>
+      <main className={classes.container}>
+        <ul className={classes.userList}>
           {admins.map((admin) => (
             <li
               key={admin._id}
               value={admin.username}
               onClick={() => onSelectUser(admin)}
+              className={classes.user}
             >
               {admin.username}
             </li>

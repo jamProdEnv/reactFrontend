@@ -16,13 +16,12 @@ export function Wrapper() {
         </header>
         <main>
           <Outlet />
-
-          <ChatRoom />
         </main>
-        <footer>
-          <GlobalFooter />
-        </footer>
+        <ChatRoom />
       </div>
+      <footer>
+        <GlobalFooter />
+      </footer>
     </>
   );
 }

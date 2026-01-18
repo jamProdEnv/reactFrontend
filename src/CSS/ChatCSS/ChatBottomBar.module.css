@@ -5,4 +5,5 @@
   display: flex;
   gap: 8px;
   padding: 8px;
+  z-index: 1000000000;
 }

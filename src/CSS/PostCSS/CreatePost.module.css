@@ -1,15 +1,12 @@
 .container {
-  border: 1px solid green;
   margin: auto;
 }
 
 .content {
-  border: 1px solid orange;
   display: none;
 }
 
 .content2 {
-  border: 1px solid orange;
   display: flex;
   max-width: 90%;
   margin: auto;
@@ -33,8 +30,6 @@ textarea {
 }
 
 .icon {
-  border: 1px solid yellowgreen;
-  color: yellowgreen;
   position: absolute;
   right: -50%;
   top: 0;

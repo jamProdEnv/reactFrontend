@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  border: 1px solid green;
+  border-top: 2px solid black;
 }
 
 .container > h3 {

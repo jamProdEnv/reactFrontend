@@ -61,8 +61,7 @@ export function PostSorting({
               onChange={() => handleSelect(field)}
               className={classes.sortCheckbox}
             />
-            <span className={classes.customSortIndicator}></span>
-            {field}
+            <span className={classes.customSortIndicator}>{field}</span>
           </label>
         ))}
       </div>

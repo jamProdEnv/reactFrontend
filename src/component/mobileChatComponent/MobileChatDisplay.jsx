@@ -10,12 +10,17 @@ import { EnterMobileMessage } from "./EnterMobileMessage";
 import { userContext } from "../../context/UserContext";
 import { MobileChatMessage } from "./MobileChatMessage";
 import { useSocket } from "../../context/SocketIOContext";
+import { Link } from "react-router-dom";
+import KeyBoardTab from "@mui/icons-material/KeyBoardTab";
+import { MobileChatHeaderHeader } from "./MobileChatHeader";
 export function MobileChatDisplay() {
+  const [userListOpen, setUserListOpen] = useState(true);
   const [displayedUser, setDisplayedUser] = useState();
   const { messages, sendMessage, joinRoom, currentRoom, setCurrentRoom } =
     useChat();
   const { socket } = useSocket();
   const { username } = userContext();
+  const [, token] = useAuth();
 
   function handleSelect(user) {
     console.log(user);
@@ -25,18 +30,46 @@ export function MobileChatDisplay() {
     setDisplayedUser(user);
     socket.emit("chat.join", privateRoom);
     joinRoom(privateRoom);
+    // ✅ CLOSE USER LIST
+    setUserListOpen(false);
+  }
+
+  if (!username || !token) {
+    return (
+      <div className={classes.login}>
+        {/* Please <Link to={"/login"}>Login</Link> or{" "}
+        <Link to={"/signup"}>Signup</Link> To View Your Messages. */}
+        <MobileChatHeaderHeader />
+      </div>
+    );
   }
 
   return (
     <>
       <div className={classes.container}>
-        <section className={classes.userBlock}>
+        <section
+          className={userListOpen ? classes.userBlock : classes.closeUserBlock}
+        >
           {/* Render Rooms */}
+          <h3>Active Chats</h3>
           <MobileUserList onSelectUser={handleSelect} />
         </section>
 
-        <main className={classes.messagesBlock}>
-          <div>
+        <main
+          className={
+            userListOpen ? classes.closeMessagesBlock : classes.messagesBlock
+          }
+        >
+          <div className={classes.messagesBlockHeader}>
+            <KeyBoardTab
+              className={classes.return}
+              onClick={() => setUserListOpen(true)}
+            />
+
+            <h2 className={"username"}>{username}</h2>
+          </div>
+
+          <div className={classes.messageBox}>
             {messages.map((message, index) => {
               const myUsername = message.username === username;
               return (
@@ -55,10 +88,12 @@ export function MobileChatDisplay() {
               );
             })}
           </div>
-          <div>
-            <EnterMobileMessage onSend={sendMessage} />
-          </div>
         </main>
+        <div
+          className={userListOpen ? classes.closeMessagesBlock : classes.input}
+        >
+          <EnterMobileMessage onSend={sendMessage} />
+        </div>
       </div>
     </>
   );
