@@ -11,7 +11,7 @@ import { userContext } from "../../context/UserContext";
 import { MobileChatMessage } from "./MobileChatMessage";
 import { useSocket } from "../../context/SocketIOContext";
 import { Link } from "react-router-dom";
-import KeyBoardTab from "@mui/icons-material/KeyBoardTab";
+import KeyboardTab from "@mui/icons-material/KeyboardTab";
 import { MobileChatHeaderHeader } from "./MobileChatHeader";
 export function MobileChatDisplay() {
   const [userListOpen, setUserListOpen] = useState(true);
@@ -61,7 +61,7 @@ export function MobileChatDisplay() {
           }
         >
           <div className={classes.messagesBlockHeader}>
-            <KeyBoardTab
+            <KeyboardTab
               className={classes.return}
               onClick={() => setUserListOpen(true)}
             />
