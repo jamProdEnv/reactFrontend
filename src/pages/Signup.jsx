@@ -12,7 +12,7 @@ export function Signup() {
 
   const signupMutation = useMutation({
     mutationFn: () => signup({ username, password }),
-    onSuccess: () => navigate("/login"),
+    onSuccess: () => navigate("/L2m8/Q5D3/k/Ft9r/Pw6v/Gx1n"),
     onError: () => alert("failed to sign up!"),
   });
 

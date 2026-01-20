@@ -39,7 +39,7 @@ export function MobileChatDisplay() {
       <div className={classes.login}>
         {/* Please <Link to={"/login"}>Login</Link> or{" "}
         <Link to={"/signup"}>Signup</Link> To View Your Messages. */}
-        <MobileChatHeaderHeader />
+        <MobileChatHeader />
       </div>
     );
   }
