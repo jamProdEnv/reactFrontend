@@ -93,7 +93,8 @@ export function GlobalStatus() {
         </p>
       </div>
       <div className={classes.login}>
-        <Link to={"/login"}>Log In</Link> | <Link to={"/signup"}>Sign Up</Link>
+        <Link to={"/L2m8/Q5D3/k/Ft9r/Pw6v/Gx1n"}>Log In</Link> |{" "}
+        <Link to={"/S1x4/H9P7/v/Rz2k/Mq8p/Lj5w"}>Sign Up</Link>
       </div>
     </div>
   );
