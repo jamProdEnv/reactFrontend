@@ -20,55 +20,122 @@ import { MobileChat } from "./pages/chatPages/MobileChat";
 
 function App() {
   const queryClient = new QueryClient();
+  // const router = createBrowserRouter([
+  //   {
+  //     element: <Wrapper />,
+  //     children: [
+  //       {
+  //         path: "/.well-known/acme-challenge/:token",
+  //         element: <div></div>,
+  //       },
+  //       {
+  //         path: "/",
+  //         element: <LandingPage />,
+  //       },
+  //       {
+  //         path: "/resume",
+  //         element: <Resume />,
+  //       },
+  //       {
+  //         path: "/chat",
+  //         element: <MobileChat />,
+  //       },
+  //       {
+  //         path: "/blog",
+  //         element: <Blog />,
+  //       },
+  //       {
+  //         path: "/account",
+  //         elements: <UserPage />,
+  //       },
+  //       {
+  //         path: "/signup",
+  //         element: <Signup />,
+  //       },
+
+  //       {
+  //         path: "/login",
+  //         element: <Login />,
+  //       },
+  //       {
+  //         path: "/_Q8f3aZkadmin",
+  //         element: <AdminPage />,
+  //       },
+
+  //       {
+  //         path: "/_A9x2LmPsignup",
+  //         element: <AdminSignup />,
+  //       },
+
+  //       {
+  //         path: "/_Q8f4ZkNlogin",
+  //         element: <AdminLogin />,
+  //       },
+  //     ],
+  //   },
+  // ]);
+
   const router = createBrowserRouter([
     {
       element: <Wrapper />,
       children: [
+        // Landing page
         {
-          path: "/.well-known/acme-challenge/:token",
-          element: <div></div>, // Just render an empty div
-        },
-        {
-          path: "/",
+          path: "/X9a3/B7L0/r/Pq4t/G1v8/Zx5k",
           element: <LandingPage />,
         },
+
+        // Resume page
         {
-          path: "/resume",
+          path: "/M4p2/Q8V1/z/Lk7r/Nm2s/Pw9d",
           element: <Resume />,
         },
+
+        // Chat page
         {
-          path: "/chat",
+          path: "/C7k9/R2T8/j/Fi3l/Hv6q/Yp1m",
           element: <MobileChat />,
         },
+
+        // Blog page
         {
-          path: "/blog",
+          path: "/B8w6/S4L3/p/Qt9m/Vx2k/Ko7r",
           element: <Blog />,
         },
+
+        // User account page
         {
-          path: "/account",
-          elements: <UserPage />,
+          path: "/U5n7/Y2F1/q/Ax9k/Jv4m/Nt8p",
+          element: <UserPage />,
         },
+
+        // Signup page
         {
-          path: "/signup",
+          path: "/S1x4/H9P7/v/Rz2k/Mq8p/Lj5w",
           element: <Signup />,
         },
 
+        // Login page
         {
-          path: "/login",
+          path: "/L2m8/Q5D3/k/Ft9r/Pw6v/Gx1n",
           element: <Login />,
         },
+
+        // Admin page
         {
-          path: "/_Q8f3aZkadmin",
+          path: "/A3c9/F1K4/n/Vq8r/Hp2s/Lt6m",
           element: <AdminPage />,
         },
 
+        // Admin signup
         {
-          path: "/_A9x2LmPsignup",
+          path: "/AS4j/2B7V/9r/Kl3m/Px6q/Wz1v",
           element: <AdminSignup />,
         },
 
+        // Admin login
         {
-          path: "/_Q8f4ZkNlogin",
+          path: "/AL6p/3W8T/1s/Yq7n/Rv2k/Bm4p",
           element: <AdminLogin />,
         },
       ],
