@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { User } from "../chatComponent/User";
 import { useAuth } from "../../context/AuthContext";
 
-export function MobileChatHeaderHeader() {
+export function MobileChatHeader() {
   const [token, role, setToken] = useAuth();
   const { socket } = useSocket();
 

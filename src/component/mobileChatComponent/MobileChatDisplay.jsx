@@ -12,7 +12,7 @@ import { MobileChatMessage } from "./MobileChatMessage";
 import { useSocket } from "../../context/SocketIOContext";
 import { Link } from "react-router-dom";
 import KeyboardTab from "@mui/icons-material/KeyboardTab";
-import { MobileChatHeaderHeader } from "./MobileChatHeader";
+import { MobileChatHeader } from "./MobileChatHeader";
 export function MobileChatDisplay() {
   const [userListOpen, setUserListOpen] = useState(true);
   const [displayedUser, setDisplayedUser] = useState();
