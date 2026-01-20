@@ -81,7 +81,8 @@ function App() {
       children: [
         // Landing page
         {
-          path: "/X9a3/B7L0/r/Pq4t/G1v8/Zx5k",
+          // path: "/X9a3/B7L0/r/Pq4t/G1v8/Zx5k",
+          path: "/",
           element: <LandingPage />,
         },
 
