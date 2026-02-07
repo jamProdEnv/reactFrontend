@@ -46,8 +46,8 @@
     display: block;
     z-index: 9999; /* FIX */
     position: absolute;
-    top: 250%;
-    right: 50%;
+    top: 80%;
+    right: 20%;
     min-width: 100%;
     background-color: #eee;
   }
