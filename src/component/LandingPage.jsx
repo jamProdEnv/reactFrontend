@@ -1,94 +1,97 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import classes from "../CSS/LandingPage.module.css";
+
 export function LandingPage() {
   const mountRef = useRef(null);
   const initialized = useRef(false); // ⬅️ flag
-  const sceneRef = useRef(null); // store scene globally for the button
+  const sceneRef = useRef(null);
+  const cameraRef = useRef(null);
+  const rendererRef = useRef(null);
+
   useEffect(() => {
     if (initialized.current) return; // already ran
     initialized.current = true;
     const container = mountRef.current;
-    //  Create A Camera
+
+    // Scene
+    const scene = new THREE.Scene();
+    scene.background = null;
+    // scene.background = new THREE.Color(0x202020);
+    scene.background = new THREE.Color(0x44ff44);
+    sceneRef.current = scene;
+
+    // Camera
     const camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
-      // container.clientWidth / container.clientHeight,
+      container.clientWidth / container.clientHeight,
       0.1,
       1000,
     );
-
-    // NEW: Move the camera back and up so it can actually see the floor
     camera.position.set(0, 5, 8);
-
-    // NEW: Aim the camera at the center of the scene
     camera.lookAt(0, 0, 0);
-    // camera.aspect = container.clientWidth / container.clientHeight;
-    // camera.updateProjectionMatrix();
+    cameraRef.current = camera;
 
-    //  Create A Renderer
+    // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    // NEW: Set the renderer size to fill the window
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    // renderer.setSize(container.clientWidth, container.clientHeight);
-
-    // NEW: Improve sharpness on high-DPI displays
     renderer.setPixelRatio(window.devicePixelRatio);
-    // container.appendChild(renderer.domElement);
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+    rendererRef.current = renderer;
 
-    // NEW: Attach the renderer's <canvas> to the DOM
-    // Without this, nothing will appear on screen
-    mountRef.current.appendChild(renderer.domElement);
+    // Lights
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    const dir = new THREE.DirectionalLight(0xffffff, 1);
+    dir.position.set(5, 10, 5);
+    scene.add(dir);
 
-    //  Create a scene
-    const scene = new THREE.Scene();
-    new THREE.WebGLRenderer({ alpha: true });
-    sceneRef.current = scene;
-    //  Remove any background by setting the background to null
-    scene.background = null;
-    //  If you want a simple color, just set the background to a color
-    scene.background = new THREE.Color(0x44ff44);
+    // Floor
+    const floor = new THREE.Mesh(
+      new THREE.BoxGeometry(10, 0.25, 10),
+      new THREE.MeshStandardMaterial({ color: 0xffffff }),
+    );
+    scene.add(floor);
 
-    const textureLoader = new THREE.TextureLoader();
+    const updateCameraForScreen = () => {
+      const width = container.clientWidth;
 
-    //  Create The lights
-    scene.add(new THREE.AmbientLight(0x666666));
-    scene.add(new THREE.DirectionalLight(0xaaaaaa));
+      if (width < 600) {
+        camera.position.set(0, 6, 11);
+      } else if (width < 900) {
+        camera.position.set(0, 5, 9);
+      } else {
+        camera.position.set(0, 5, 8);
+      }
 
-    //  Create the floor
-    // const geo = new THREE.BoxBufferGeometry(10, 0.25, 10, 10, 10, 10);
-    const geo = new THREE.BoxGeometry(10, 0.25, 10, 10, 10, 10);
-    // const geo = new THREE.PlaneGeometry(10, 10);
-
-    const mat = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    const mesh = new THREE.Mesh(geo, mat);
-    // mesh.rotation.x = -Math.PI / 2;
-    scene.add(mesh);
-
-    // NEW: Animation loop
-    // This runs every frame (~60 times per second)
-    // Even for a static scene, Three.js must be told to render repeatedly
+      camera.lookAt(0, 0, 0);
+    };
+    // Render loop
     const animate = () => {
-      renderer.render(scene, camera); // Draw the scene from the camera's view
-      requestAnimationFrame(animate); // Schedule the next frame
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
     };
     animate();
 
-    // NEW: Cleanup when the component unmounts
-    // Prevents memory leaks when navigating away
+    // Resize handler
+    const resize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      updateCameraForScreen();
+    };
+    updateCameraForScreen();
+    // 🔥 Observe the container, not the window
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+
+    window.addEventListener("resize", resize);
+
     return () => {
-      // if (container && renderer.domElement.parentNode === container) {
-      //   container.removeChild(renderer.domElement);
-      // }
-      if (
-        mountRef.current &&
-        renderer.domElement.parentNode === mountRef.current
-      ) {
-        mountRef.current.removeChild(renderer.domElement);
-      }
-      // mountRef.current.removeChild(renderer.domElement);
+      window.removeEventListener("resize", resize);
       renderer.dispose();
-      geo.dispose();
-      mat.dispose();
     };
   }, []);
 
@@ -143,11 +146,10 @@ export function LandingPage() {
   };
 
   return (
-    <div>
-      <h1>Welcome</h1>
+    <div className={classes.container}>
       <button onClick={addCube}>Add Cube</button>
       <button onClick={removeCube}>Remove Cube</button>
-      <div ref={mountRef} />
+      <div ref={mountRef} className={classes.threeCanvas} />
     </div>
   );
 }
