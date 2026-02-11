@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
-import { ArrowForwardIcon } from "@mui/icons-material/ArrowForward";
-import { ArrowBackIcon } from "@mui/icons-material/ArrowBack";
+import ArrowForward from "@mui/icons-material/ArrowForward";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 import classes from "../CSS/LandingPage.module.css";
 
 const scenes = [
@@ -27,12 +27,12 @@ export function LandingPage() {
     <div className={classes.container}>
       <div className={classes.nav}>
         <button onClick={prevScene}>
-          <ArrowBackIcon />
+          <ArrowBack />
         </button>
         <span>{scenes[currentIndex].id.toUpperCase()}</span>
 
         <button onClick={nextScene}>
-          <ArrowForwardIcon />
+          <ArrowForward />
         </button>
       </div>
       <div className={classes.sceneWrapper}>
