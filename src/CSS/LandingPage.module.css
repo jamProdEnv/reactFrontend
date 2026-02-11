@@ -26,26 +26,13 @@
 .nav > button + span + button {
   margin-top: 0;
 }
-.navbar {
-  display: block;
-  background-color: black;
-}
-
-.list {
-  display: flex;
-}
-
-.list > li + li {
-  margin-top: 0;
-}
-
-.list > li > a {
-  list-style-type: none;
-  color: white;
-}
 
 .sceneWrapper {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+button {
+  font-size: 1rem;
 }
