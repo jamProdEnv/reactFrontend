@@ -79,7 +79,10 @@ export function ChatBox({
                 handleChatClick
               }
             >
-              <ChatIcon style={{ fontSize: 30, color: "#fff" }} />
+              <ChatIcon
+                className={classes.icon}
+                style={{ fontSize: 30, color: "black" }}
+              />
             </button>
           ))}
 

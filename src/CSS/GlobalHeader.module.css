@@ -2,28 +2,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin: 0;
-  background-color: white;
+  background-color: black;
   font-size: x-small;
 }
 
-.header h1 {
-  font-family: "Permanent Marker";
-  letter-spacing: 1rem;
-  color: navy;
+.header::after {
+  margin-top: 0;
 }
 
-.div1 {
-  display: none;
+.header h1 {
+  font-size: 1rem;
+  font-family: "Permanent Marker";
+  letter-spacing: 1rem;
+  color: white;
+}
+
+/* .div1 {
+  display: block;
 }
 
 .div2 {
   width: 100%;
   margin: 0;
-  background-color: blueviolet;
-  padding: 0.5em 0 0.5em 0;
-}
+} */
 
 .links {
   display: flex;
@@ -31,7 +37,7 @@
 
 .links > li {
   list-style-type: none;
-  margin: auto 1.5em auto 0;
+  margin-right: 1em;
 }
 
 .links > li + li {
@@ -42,7 +48,7 @@
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .status {
@@ -58,8 +64,6 @@
 @media screen and (min-width: 800px) {
   .header {
     font-size: 1em;
-  }
-  .div1 {
     display: flex;
     justify-content: space-between;
     color: white;
@@ -78,7 +82,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .div1 {
+  .header {
     display: flex;
     justify-content: space-between;
 
@@ -89,21 +93,12 @@
     margin-bottom: 1em;
   }
 
-  .div2 {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    width: 1080px;
-    max-width: 1080px;
-    border-radius: 2em;
-  }
-
   .links li {
     margin: 0 2em;
   }
 
   .links li a {
-    padding: 0.5em 1.5em;
+    /* padding: 0.5em 1.5em; */
     border-radius: 2em;
     transition: background-color 0.2s ease-in-out 0.05s;
   }

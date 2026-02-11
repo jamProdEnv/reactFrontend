@@ -17,6 +17,7 @@ import { AdminLogin } from "./pages/adminPages/AdminLogin";
 import { AdminPage } from "./pages/adminPages/AdminPage";
 import { AdminContextProvider } from "./context/AdminContext";
 import { MobileChat } from "./pages/chatPages/MobileChat";
+import { CubeGeometry } from "./component/threeComponent/CubeGeometry";
 
 function App() {
   const queryClient = new QueryClient();

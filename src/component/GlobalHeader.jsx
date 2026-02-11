@@ -5,12 +5,7 @@ export function GlobalHeader() {
   return (
     <>
       <header className={classes.header}>
-        <div className={classes.div1}>
-          <h1>Wsjr</h1>
-          <div className={classes.status}>
-            <GlobalStatus />
-          </div>
-        </div>
+        <h1>Wsjr</h1>
 
         <div className={classes.div2}>
           <nav className={classes.nav}>
@@ -30,6 +25,9 @@ export function GlobalHeader() {
               </li>
             </ul>
           </nav>
+        </div>
+        <div className={classes.status}>
+          <GlobalStatus />
         </div>
       </header>
     </>

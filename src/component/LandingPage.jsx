@@ -1,68 +1,38 @@
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import { useState } from "react";
+import { CubeGeometry } from "./threeComponent/CubeGeometry";
+import { Sprite } from "./threeComponent/Sprite";
+
 import classes from "../CSS/LandingPage.module.css";
+
+const scenes = [
+  { id: "cube", component: CubeGeometry },
+  { id: "rain", component: Sprite },
+];
+
 export function LandingPage() {
-  const mountRef = useRef(null);
-  useEffect(() => {
-    const container = mountRef.current;
-    //  create the scene
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x202020);
-    //  create the camera
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      1000,
-    );
-    camera.position.z = 20;
-    //  create the light
-    const light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(5, 10, 5);
-    scene.add(light);
-    //  create the mesh
-    const geometry = new THREE.BoxGeometry(10, 10, 10);
-    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    //  create the renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    //  handle resize
-    const resize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
+  const prevScene = () => {
+    setCurrentIndex((prev) => (prev - 1 + scenes.length) % scenes.length);
+  };
 
-      if (width === 0 || height === 0) return;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    };
+  const nextScene = () => {
+    setCurrentIndex((prev) => (prev + 1) % scenes.length);
+  };
 
-    //  observe the resize
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
+  const ActiveScene = scenes[currentIndex].component;
 
-    //  create the render loop
-    const animate = () => {
-      cube.rotation.y += 0.01;
-      cube.rotation.x += 0.01;
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    };
-    animate();
-    return () => {
-      renderer.dispose();
-      geometry.dispose();
-      material.dispose();
-      container.removeChild(renderer.domElement);
-    };
-  }, []);
   return (
     <div className={classes.container}>
-      <div ref={mountRef} className={classes.threeCanvas}></div>
+      <div className={classes.nav}>
+        <button onClick={prevScene}>⬅</button>
+        <span>{scenes[currentIndex].id.toUpperCase()}</span>
+        <button onClick={nextScene}>➡</button>
+      </div>
+
+      <div className={classes.sceneWrapper}>
+        <ActiveScene />
+      </div>
     </div>
   );
 }

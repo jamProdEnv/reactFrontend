@@ -85,13 +85,13 @@ export function GlobalStatus() {
   }
   return (
     <div className={classes.container}>
-      <div className={classes.offline}>
+      {/* <div className={classes.offline}>
         <AccountBoxIcon />
         <p className={classes.statusDisplay}>
           Socket Status: <b>{status} </b>
           {error && <i>- {error.message}</i>}
         </p>
-      </div>
+      </div> */}
       <div className={classes.login}>
         <Link to={"/L2m8/Q5D3/k/Ft9r/Pw6v/Gx1n"}>Log In</Link> |{" "}
         <Link to={"/S1x4/H9P7/v/Rz2k/Mq8p/Lj5w"}>Sign Up</Link>
