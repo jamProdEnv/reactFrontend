@@ -73,6 +73,10 @@
   .header h1 {
     display: none;
   }
+
+  .status {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -87,7 +91,7 @@
   }
 
   .header h1 {
-    display: block;
+    display: none;
   }
 
   .mobile {
