@@ -8,7 +8,7 @@
   width: 100%;
   margin: 0;
   background-color: black;
-  font-size: xx-small;
+  font-size: small;
 }
 
 .header::after {
@@ -56,7 +56,7 @@
 }
 
 .status {
-  display: block;
+  display: none;
   margin-right: 1em;
 }
 
