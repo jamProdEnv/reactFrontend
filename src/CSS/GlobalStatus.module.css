@@ -1,3 +1,35 @@
+.mobile {
+  display: block;
+  color: white;
+  font-size: small;
+  text-decoration: none;
+  display: block;
+}
+
+.desktop {
+  display: none;
+}
+
+.mobile a {
+  color: white;
+  font-size: small;
+  text-decoration: none;
+  display: block;
+}
+
+.login {
+  display: block;
+  width: max-content;
+}
+
+.login a {
+  letter-spacing: 0.2em;
+  color: white;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
 @media screen and (min-width: 800px) {
   .container {
     /* border: 1px solid yellowgreen; */
@@ -39,7 +71,7 @@
 
   .dropdown:hover .dropdownLabel::after {
     top: 2.3em;
-    border-color: transparent transparent black;
+    border-color: transparent transparent white;
   }
 
   .dropdownMenu {
@@ -50,6 +82,7 @@
     right: 20%;
     min-width: 100%;
     background-color: #eee;
+    color: black;
   }
 
   /* .dropdown:hover .dropdownMenu {
@@ -112,5 +145,23 @@
     color: white;
     padding: 0;
     margin: 0;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
   }
 }

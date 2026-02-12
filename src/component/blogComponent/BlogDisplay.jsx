@@ -77,11 +77,15 @@ export function BlogDisplay({
   return (
     <>
       <div className={classes.container}>
-        <div className={`${classes.tile} ${classes.header}`}>
+        {/* Not Using This Yet */}
+        {/* <div className={`${classes.tile} ${classes.header}`}>
+
+        
           <Suspense fallback={null}>
+            
             <BlogHeader onTagSelect={handleSelectTag} />
           </Suspense>
-        </div>
+        </div> */}
         <div className={`${classes.tile} ${classes.createPosts}`}>
           <Suspense fallback={null}>
             <CreatePost />

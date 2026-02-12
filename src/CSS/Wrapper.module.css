@@ -24,6 +24,7 @@ header {
   z-index: 10000; /* FIX */
   flex-shrink: 0;
   /* border-bottom: 2px solid black; */
+  margin: 0;
 }
 
 main {
@@ -32,7 +33,7 @@ main {
   /* background-color: blue; */
   height: 100vh;
   /* overflow-y: auto; */
-  background-color: black;
+  margin: 0;
 }
 
 footer {

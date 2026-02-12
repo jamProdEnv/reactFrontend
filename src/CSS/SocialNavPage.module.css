@@ -7,7 +7,6 @@
   align-items: center;
   width: 100%;
   margin: 0;
-  background-color: black;
   font-size: x-small;
 }
 
@@ -19,24 +18,10 @@
   font-size: 1rem;
   font-family: "Permanent Marker";
   letter-spacing: 1rem;
-  color: white;
-  display: none;
-  margin-left: 1rem;
 }
-
-/* .div1 {
-  display: block;
-}
-
-.div2 {
-  width: 100%;
-  margin: 0;
-} */
 
 .links {
   display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 .links > li {
@@ -50,28 +35,17 @@
 
 .links li > a {
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.2rem;
   text-decoration: none;
-  color: white;
 }
 
 .status {
-  display: block;
-  margin-right: 1em;
-}
-
-.desktop {
   display: none;
 }
 
 @media screen and (min-width: 600px) {
   .header {
     font-size: small;
-    justify-content: space-between;
-  }
-
-  .header h1 {
-    display: none;
   }
 }
 
@@ -80,66 +54,21 @@
     font-size: 1em;
     display: flex;
     justify-content: space-between;
-    color: white;
     width: 100%;
     padding-left: 1em;
     padding-right: 1em;
   }
 
-  .header h1 {
-    display: block;
-  }
-
   .mobile {
     display: none;
   }
-
-  .desktop {
-    display: block;
-  }
-
-  /* .status {
-    display: block;
-  } */
 }
-
 @media screen and (min-width: 1000px) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-
-    /* background-color: rgba(225, 230, 235, 0.75);
-    backdrop-filter: blur(10px); */
-    color: #2e2e2e;
-    width: 100%;
-    margin-bottom: 1em;
-  }
-
-  .header h1 {
-    display: block;
-  }
-
-  .links li {
-    margin: 0 2em;
-  }
-
-  .links li a {
-    /* padding: 0.5em 1.5em; */
-    border-radius: 2em;
-    transition: background-color 0.2s ease-in-out 0.05s;
-  }
-
-  .links > li > a:hover {
-    background-color: black;
-    color: white;
-  }
-
-  .mobile {
+  .navbar {
     display: none;
   }
-
-  .desktop {
-    display: block;
+  .mobile {
+    display: none;
   }
 
   .status {

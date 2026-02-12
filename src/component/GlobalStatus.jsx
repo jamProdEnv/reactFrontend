@@ -31,7 +31,7 @@ export function GlobalStatus() {
           <div className={classes.dropdown}>
             <div className={classes.dropdownLabel}>
               <div
-                className={classes.svg}
+                className={`${classes.svg} ${classes.desktop}`}
                 onClick={() => {
                   if (!clicked) {
                     setClicked(true);
@@ -40,15 +40,37 @@ export function GlobalStatus() {
                   }
                 }}
               >
-                <AccountBoxIcon />
+                <AccountBoxIcon style={{ fontSize: "25", color: "white" }} />
               </div>
+
+              {sub ? (
+                <div className={classes.mobile}>
+                  <div
+                    onClick={() => {
+                      handleLogout();
+                      if (clicked) {
+                        setClicked(false);
+                      }
+                    }}
+                  >
+                    Logout
+                  </div>
+                </div>
+              ) : (
+                <div className={classes.login}>
+                  <Link to={"/L2m8/Q5D3/k/Ft9r/Pw6v/Gx1n"}>Log In</Link> |{" "}
+                  <Link to={"/S1x4/H9P7/v/Rz2k/Mq8p/Lj5w"}>Sign Up</Link>
+                </div>
+              )}
             </div>
             {clicked && (
               <div className={classes.dropdownMenu}>
                 <ul className={classes.submenu}>
                   <li>
                     <div>
-                      <AccountBoxIcon />
+                      <AccountBoxIcon
+                        style={{ fontSize: "40", color: "black" }}
+                      />
                     </div>
                     <div className={classes.statusContainer}>
                       <div className={classes.status}>

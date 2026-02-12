@@ -9,9 +9,10 @@ import { Post } from "../../component/blogComponent/Post";
 import { PostList } from "../../component/blogComponent/PostList";
 // import { BlogDisplay } from "../../component/blogComponent/BlogDisplay";
 import classes from "../../CSS/Blog.module.css";
+import { SocialNav } from "../../component/utilityComponents/SocialNav";
 
 const BlogDisplay = lazy(
-  () => import("../../component/blogComponent/BlogDisplay")
+  () => import("../../component/blogComponent/BlogDisplay"),
 );
 export function Blog() {
   const [author, setAuthor] = useState("");
@@ -46,6 +47,7 @@ export function Blog() {
 
   return (
     <>
+      <SocialNav />
       <div className={classes.container}>
         <Suspense fallback={<p>Loading blog…</p>}>
           {/* <BlogDisplay

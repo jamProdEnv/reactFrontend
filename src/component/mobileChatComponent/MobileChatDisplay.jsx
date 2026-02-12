@@ -13,6 +13,7 @@ import { useSocket } from "../../context/SocketIOContext";
 import { Link } from "react-router-dom";
 import KeyboardTab from "@mui/icons-material/KeyboardTab";
 import { MobileChatHeader } from "./MobileChatHeader";
+import { SocialNav } from "../utilityComponents/SocialNav";
 export function MobileChatDisplay() {
   const [userListOpen, setUserListOpen] = useState(true);
   const [displayedUser, setDisplayedUser] = useState();
@@ -46,6 +47,7 @@ export function MobileChatDisplay() {
 
   return (
     <>
+      <SocialNav />
       <div className={classes.container}>
         <section
           className={userListOpen ? classes.userBlock : classes.closeUserBlock}
