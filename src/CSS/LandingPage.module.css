@@ -1,4 +1,6 @@
 /* LandingPage.module.css */
+@import url("https://fonts.cdnfonts.com/css/ica-rubrik-black");
+@import url("https://fonts.cdnfonts.com/css/poppins");
 
 .container {
   display: block;
@@ -35,4 +37,114 @@
 
 button {
   font-size: 1rem;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  background-color: black;
+}
+
+.slider {
+  position: absolute;
+  top: 10%;
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 250px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 2;
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+    )
+    translateZ(550px);
+  height: 100%;
+  width: 100%;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  transform: translateX(-50%);
+  width: min(1400px, 100vw);
+  height: max-content;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.content h1 {
+  font-family: "ICA Rubrik";
+  font-size: 8em;
+  line-height: 1em;
+  color: #25283b;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.content h1::after {
+  position: absolute;
+  inset: 0 0 0 0;
+  content: attr(data-content);
+  z-index: 2;
+  /* -webkit-text-stroke: 2px #204753; */
+  -webkit-text-stroke: 2px #879498;
+  color: transparent;
+}
+
+.author {
+  font-family: Poppins;
+  text-align: right;
+  max-width: 200px;
+  margin-left: auto;
+}
+
+.content h2 {
+  font-size: 2.5em;
+}
+.model {
+  background-image: url(../assets/Pharaoh4.png);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75vh;
+  background-size: auto 130%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 1;
 }
