@@ -30,10 +30,14 @@ export function Sprite() {
         100,
       );
       camera.position.set(-3, 2, 8);
+      // camera.position.set(0, 0, 10);
+      // camera.lookAt(0, 0, 0);
 
       //  Create The Renderer
       const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      
+      // renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
       container.appendChild(renderer.domElement);
 
       sceneRef.current = { scene, camera, renderer };
@@ -118,12 +122,16 @@ export function Sprite() {
 
     // --- Responsive ---
     const onResize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
+      // const width = container.clientWidth;
+      // const height = container.clientHeight;
+      if(!container) return;
+       const { width, height } = container.getBoundingClientRect();
+
+  if (width === 0 || height === 0) return;
       if (width === 0 || height === 0) return;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      renderer.setSize(width, height, false);
     };
     const resizeObserver = new ResizeObserver(onResize);
     resizeObserver.observe(container);
