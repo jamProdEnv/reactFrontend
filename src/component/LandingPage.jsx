@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
 import classes from "../CSS/LandingPage.module.css";
+import { DominoPhysics } from "./threeComponent/DominoPhysics";
 
 const items = [
   { type: "img", src: "/models1.jpg" },
@@ -12,11 +13,14 @@ const items = [
   { type: "img", src: "/models6.jpg" },
   { type: "component", component: Sprite },
   { type: "component", component: CubeGeometry },
+  // { type: "component", component: DominoPhysics },
 ];
 
 export function LandingPage() {
+  //  State of clicked card vs not clicked
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  //  If index is available pass index to the iems list
   const expandedItem =
     expandedIndex !== null ? items[expandedIndex] : null;
 
@@ -26,12 +30,15 @@ export function LandingPage() {
       {expandedItem && (
         <div
           className={classes.modalOverlay}
-          onClick={() => setExpandedIndex(null)}
+        
         >
+          
           <div
             className={classes.modalContent}
+            //  explain what stopPropagation() function does
             onClick={(e) => e.stopPropagation()}
           >
+            <button className={classes.modalClose}   onClick={() => setExpandedIndex(null)}>close</button>
             {expandedItem.type === "img" && (
               <img src={expandedItem.src} alt="" />
             )}
