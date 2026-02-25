@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
 import classes from "../CSS/LandingPage.module.css";
-import { DominoPhysics } from "./threeComponent/DominoPhysics";
+// import { DominoPhysics } from "./threeComponent/DominoPhysics";
 
 const items = [
   { type: "img", src: "/models1.jpg" },
