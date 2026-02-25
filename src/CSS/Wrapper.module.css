@@ -15,7 +15,7 @@ body {
   margin: 0;
   width: 100%;
   /* background-color: green; */
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 header {
@@ -44,3 +44,15 @@ footer {
 
   flex-shrink: 0; /* never shrink */
 }
+
+/* Hide scrollbar for Chrome, Edge, and Safari */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge (older), and Firefox */
+.container {
+  -ms-overflow-style: none;  /* IE and old Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
