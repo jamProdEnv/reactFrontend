@@ -155,7 +155,36 @@ button {
   right: 0.15em;
   text-indent: 0;
   content: "\00D7";
+   z-index: 1000000000000000000000;
  
+}
+
+/* Full-screen overlay for clicked card/component */
+.fullViewOverlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.95); /* darken behind component */
+  z-index: 9999; /* on top of everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+   z-index: 1000000000000000000000;
+}
+
+/* Make images fit nicely inside overlay */
+.fullImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+   z-index: 1000000000000000000000;
+}
+
+/* Reuse threeWrapper as is, it will scale inside overlay */
+.threeWrapper {
+  width: 90vw;
+  height: 90vh;
+   z-index: 1000000000000000000000;
 }
 
 @keyframes modalFade {

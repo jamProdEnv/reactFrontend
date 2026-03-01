@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
 import { DominoPhysics } from "./threeComponent/DominoPhysics";
 import classes from "../CSS/LandingPage.module.css";
-// import { DominoPhysics } from "./threeComponent/DominoPhysics";
-import { useThreeScene } from "../hooks/useThreeScene";
 
 const items = [
   { type: "img", src: "/models1.jpg" },
@@ -13,105 +11,81 @@ const items = [
   { type: "img", src: "/models4.jpg" },
   { type: "img", src: "/models5.png" },
   { type: "img", src: "/models6.jpg" },
-  {type: "img", src: "/models7.png"},
-  // {type: "img", src: '/models8.png'},
+  { type: "img", src: "/models7.png" },
   { type: "component", label: "Sprite Raindrops", component: Sprite },
   { type: "component", label: "Cube Geometry", component: CubeGeometry },
   { type: "component", label: "Domino Physics", component: DominoPhysics },
 ];
 
 export function LandingPage() {
-  //  State of clicked card vs not clicked
-  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const ActiveItem = activeIndex !== null ? items[activeIndex] : null;
 
-  //  If index is available pass index to the iems list
-  const expandedItem =
-    expandedIndex !== null ? items[expandedIndex] : null;
-
-    // Use ThreeScene hook for manual resizing
-  const { triggerResize } = useThreeScene(() => {}); // empty initScene here, actual scene is inside components
-
-  // Whenever modal opens, trigger resize
-  useEffect(() => {
-    if (expandedItem && expandedItem.type === "component") {
-      // wait a tick to ensure modal is rendered
-      setTimeout(() => {
-        triggerResize();
-      }, 50);
-    }
-  }, [expandedItem, triggerResize]);
   return (
     <div className={classes.container}>
-      {/* FULLSCREEN MODAL */}
-      {expandedItem && (
-        <div
-          className={classes.modalOverlay}
-        
-        >
-          
-          <div
-            className={classes.modalContent}
-            //  explain what stopPropagation() function does
-            onClick={(e) => e.stopPropagation()}
+      {/* ============================= */}
+      {/* Full-screen card/component */}
+      {/* ============================= */}
+      {ActiveItem && (
+        <div className={classes.fullViewOverlay}>
+          <button
+            className={classes.modalClose}
+            onClick={() => setActiveIndex(null)}
           >
-            <button className={classes.modalClose}   onClick={() => setExpandedIndex(null)}>close</button>
-            {expandedItem.type === "img" && (
-              <img src={expandedItem.src} alt="" />
-            )}
+            Close
+          </button>
 
-            {expandedItem.type === "component" && (
-              <div key={expandedIndex} className={classes.threeWrapper}>
-                <expandedItem.component />
-                 </div>
-              
-            )}
-          </div>
+          {ActiveItem.type === "img" && (
+            <img src={ActiveItem.src} alt="" className={classes.fullImage} />
+          )}
+
+          {ActiveItem.type === "component" && (
+            <div className={classes.threeWrapper}>
+              <ActiveItem.component />
+            </div>
+          )}
         </div>
       )}
 
+      {/* ============================= */}
+      {/* Regular Banner + Carousel */}
+      {/* ============================= */}
       <div className={classes.banner}>
-        <div
-          className={classes.slider}
-          style={{ "--quantity": items.length }}
-        >
-          {items.map((item, index) => {
-            const Component = item.component;
-
-            return (
+        {!ActiveItem && (
+          <div className={classes.slider} style={{ "--quantity": items.length }}>
+            {items.map((item, index) => (
               <div
                 key={index}
                 className={classes.item}
                 style={{ "--position": index + 1 }}
-                onClick={() => setExpandedIndex(index)}
+                onClick={() => setActiveIndex(index)}
               >
-                {item.type === "img" && (
-                  <img src={item.src} alt="" />
-                )}
-
+                {item.type === "img" && <img src={item.src} alt="" />}
                 {item.type === "component" && (
                   <div className={classes.image}>
-                    (Click) <br/>
+                    (Click) <br />
                     {item.label}
                   </div>
                 )}
               </div>
-            );
-          })}
-        </div>
-
-        <div className={classes.content}>
-          <h1 data-content="WSJR PORTFOLIO">
-            WSJR PORTFOLIO
-          </h1>
-
-          <div className={classes.author}>
-            <h2>Joshua Middleton</h2>
-            <p>Web Development</p>
-            <p>Welcome To My Portfolio</p>
+            ))}
           </div>
+        )}
+      </div>
 
-          <div className={classes.model}></div>
+      {/* ============================= */}
+      {/* Content, author, and model remain */}
+      {/* ============================= */}
+      <div className={classes.content}>
+        <h1 data-content="WSJR PORTFOLIO">WSJR PORTFOLIO</h1>
+
+        <div className={classes.author}>
+          <h2>Joshua Middleton</h2>
+          <p>Web Development</p>
+          <p>Welcome To My Portfolio</p>
         </div>
+
+        <div className={classes.model}></div>
       </div>
     </div>
   );
