@@ -26,7 +26,33 @@ export function LandingPage() {
       {/* ============================= */}
       {/* Full-screen card/component */}
       {/* ============================= */}
+       {/* FULLSCREEN MODAL */}
       {ActiveItem && (
+        <div
+          className={classes.modalOverlay}
+        
+        >
+          
+          <div
+            className={classes.modalContent}
+            //  explain what stopPropagation() function does
+          
+          >
+            <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
+            {ActiveItem.type === "img" && (
+              <img src={ActiveItem.src} alt=""/>
+            )}
+
+            {ActiveItem.type === "component" && (
+              <div className={classes.threeWrapper}>
+                <ActiveItem.component />
+                 </div>
+              
+            )}
+          </div>
+        </div>
+      )}
+      {/* {ActiveItem && (
         <div className={classes.fullViewOverlay}>
           <button
             className={classes.modalClose}
@@ -45,7 +71,7 @@ export function LandingPage() {
             </div>
           )}
         </div>
-      )}
+      )} */}
 
       {/* ============================= */}
       {/* Regular Banner + Carousel */}
