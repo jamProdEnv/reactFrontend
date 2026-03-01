@@ -99,7 +99,7 @@ img {
 /* MODAL (EXPANDED VIEW) */
 /* ============================= */
 
-.modalOverlay {
+/* .modalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.92);
@@ -120,7 +120,7 @@ img {
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
   animation: modalFade 0.35s ease;
   margin: 0 auto;
-}
+} */
 
 button {
   padding: 0.5em 0.7em;

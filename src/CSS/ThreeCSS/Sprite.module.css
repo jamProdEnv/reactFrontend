@@ -4,11 +4,13 @@
   height: 100vh;
   /* important */
 
-  margin: auto;
+  margin: 0 auto;
   /* position: relative; */
 }
 
 .threeCanvas {
+  display: block;
+  margin: 0 auto;
   width: 400px;
   height: 400px; /* THIS is the missing piece */
 }
