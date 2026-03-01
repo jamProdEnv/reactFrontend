@@ -1,14 +1,13 @@
 .container {
-  display: block;
-  width: 100%;
-  height: 100vh; /* important */
-  margin: auto;
-  /* position: relative; */
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .threeCanvas {
-  width: 100%;
-  height: 100%; /* THIS is the missing piece */
+  width: 60vw;
+  height: 60vh;
 }
 
 /* .controls {
