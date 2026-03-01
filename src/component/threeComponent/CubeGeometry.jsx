@@ -7,12 +7,16 @@ export function CubeGeometry() {
   const { mountRef, animationRef, sceneRef } = useThreeScene(({ scene, camera, renderer, animationRef  }) => {
     // const container = mountRef.current;
 
+     const isMobile = mountRef.current.clientWidth < 600;
+
+      
     // --- Scene setup ---
     // scene is already created by hook
     scene.background = new THREE.Color(0x202020);
-
+    camera.position.set(0, isMobile ? 10 : 0, isMobile ? 30 : 20); 
+      camera.lookAt(0, 0, 0);
     // --- Camera setup ---
-    camera.position.set(0, 0, 20);
+    // camera.position.set(0, 0, 20);
 
     // --- Lights ---
     const light = new THREE.DirectionalLight(0xffffff);
