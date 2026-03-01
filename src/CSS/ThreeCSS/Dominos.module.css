@@ -13,15 +13,21 @@
 
 
 .container {
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 100%;
+  height: 100vh;       /* full viewport height */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .threeCanvas {
-  width: 400px;
-  height: 400px; /* THIS is the missing piece */
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1; /* maintain square shape */
+  display: block;
+  margin: 0 auto;
 }
 
 /* .controls {
