@@ -9,8 +9,8 @@
 }
 
 .threeCanvas {
-  width: 100%;
-  height: 100%; /* THIS is the missing piece */
+  width: 400px;
+  height: 400px; /* THIS is the missing piece */
 }
 
 /* .controls {
