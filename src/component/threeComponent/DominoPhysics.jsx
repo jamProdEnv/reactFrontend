@@ -31,12 +31,15 @@ export function DominoPhysics() {
       const world = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
       worldRef.current = world; // store reference for cleanup
 
+      scene.background = new THREE.Color(0x202020);
       // --- Camera setup ---
       // camera.position.set(-1.5, 4, -4);
-      camera.position.x = 0;
-      camera.position.y = 5;
-      camera.position.z = 7;
-      // camera.lookAt(0, 0, 0)
+      camera.position.set(0, 5, 8);
+      // camera.position.x = 3;
+      // camera.position.y = 2;
+      // camera.position.z = 7;
+      // camera.lookAt(1, -1, -4)
+      camera.lookAt(0, 0, 0);
 
       // --- Renderer setup ---
       renderer.physicallyCorrectLights = true;
@@ -52,7 +55,7 @@ export function DominoPhysics() {
       scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
       // --- Controls ---
-      new OrbitControls(camera, renderer.domElement);
+      // new OrbitControls(camera, renderer.domElement);
 
       // --- Arena ---
       const arena = createArena();
@@ -126,7 +129,7 @@ export function DominoPhysics() {
       </button> */}
 
       {/* Three.js container */}
-      <div className={classes.threeCanvas} ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
+      <div className={classes.threeCanvas} ref={mountRef}  />
     </div>
   );
 }
