@@ -173,6 +173,7 @@ button {
   align-items: center;
   overflow: auto;
    z-index: 1000000000000000000000;
+   margin: 0 auto;
 }
 
 /* Make images fit nicely inside overlay */
