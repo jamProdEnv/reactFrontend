@@ -7,6 +7,9 @@ export function useThreeScene(initScene) {
   const animationRef = useRef(null);
   const sceneRef = useRef(null);
 
+  // store the resize function
+  const resizeRef = useRef(() => {});
+
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
@@ -25,15 +28,15 @@ export function useThreeScene(initScene) {
 
     sceneRef.current = { scene, camera, renderer };
 
-    // Resize observer
+    // Resize function
     const resize = () => {
-    //   const { width, height } = container.getBoundingClientRect();
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
     };
+    resizeRef.current = resize;
 
     const observer = new ResizeObserver(resize);
     observer.observe(container);
@@ -49,6 +52,7 @@ export function useThreeScene(initScene) {
         renderer,
         animationRef,
       });
+      resize(); // ensure correct size after scene is ready
     };
 
     setup();
@@ -57,13 +61,9 @@ export function useThreeScene(initScene) {
       cancelAnimationFrame(animationRef.current);
       observer.disconnect();
 
-      if (typeof cleanupFn === "function") {
-        cleanupFn();
-      }
+      if (typeof cleanupFn === "function") cleanupFn();
 
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
+      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
 
       renderer.dispose();
       sceneRef.current = null;
@@ -72,5 +72,8 @@ export function useThreeScene(initScene) {
     };
   }, [initScene]);
 
-  return { mountRef, animationRef, sceneRef };
+  // Expose manual resize
+  const triggerResize = () => resizeRef.current?.();
+
+  return { mountRef, animationRef, sceneRef, triggerResize };
 }

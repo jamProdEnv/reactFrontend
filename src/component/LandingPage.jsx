@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
 import { DominoPhysics } from "./threeComponent/DominoPhysics";
 import classes from "../CSS/LandingPage.module.css";
 // import { DominoPhysics } from "./threeComponent/DominoPhysics";
+import { useThreeScene } from "../hooks/useThreeScene";
 
 const items = [
   { type: "img", src: "/models1.jpg" },
@@ -27,6 +28,18 @@ export function LandingPage() {
   const expandedItem =
     expandedIndex !== null ? items[expandedIndex] : null;
 
+    // Use ThreeScene hook for manual resizing
+  const { triggerResize } = useThreeScene(() => {}); // empty initScene here, actual scene is inside components
+
+  // Whenever modal opens, trigger resize
+  useEffect(() => {
+    if (expandedItem && expandedItem.type === "component") {
+      // wait a tick to ensure modal is rendered
+      setTimeout(() => {
+        triggerResize();
+      }, 50);
+    }
+  }, [expandedItem, triggerResize]);
   return (
     <div className={classes.container}>
       {/* FULLSCREEN MODAL */}
