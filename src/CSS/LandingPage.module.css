@@ -99,7 +99,7 @@ img {
 /* MODAL (EXPANDED VIEW) */
 /* ============================= */
 
-.modalOverlay {
+/* .modalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.92);
@@ -108,7 +108,7 @@ img {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-}
+} */
 
 
 /* .modalContent {

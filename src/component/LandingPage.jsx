@@ -27,7 +27,7 @@ export function LandingPage() {
       {/* Full-screen card/component */}
       {/* ============================= */}
        {/* FULLSCREEN MODAL */}
-      {ActiveItem && (
+      {/* {ActiveItem && (
         <div
           className={classes.modalOverlay}
         
@@ -35,7 +35,7 @@ export function LandingPage() {
           
           <div
             className={classes.modalContent}
-            //  explain what stopPropagation() function does
+          
           
           >
             <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
@@ -51,8 +51,8 @@ export function LandingPage() {
             )}
           </div>
         </div>
-      )}
-      {/* {ActiveItem && (
+      )} */}
+      {ActiveItem && (
         <div className={classes.fullViewOverlay}>
           <button
             className={classes.modalClose}
@@ -71,7 +71,7 @@ export function LandingPage() {
             </div>
           )}
         </div>
-      )} */}
+      )}
 
       {/* ============================= */}
       {/* Regular Banner + Carousel */}
