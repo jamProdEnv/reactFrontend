@@ -126,7 +126,7 @@ export function DominoPhysics() {
       </button> */}
 
       {/* Three.js container */}
-      <div className={classes.canvas} ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
+      <div className={classes.threeCanvas} ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
     </div>
   );
 }
