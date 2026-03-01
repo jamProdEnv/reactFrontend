@@ -7,8 +7,10 @@ height: 100%;
 }
 
 .threeCanvas {
-  width: fit-content;
-  height: fit-content;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
 
 }
 
