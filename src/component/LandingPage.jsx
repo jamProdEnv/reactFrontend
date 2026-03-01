@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CubeGeometry } from "./threeComponent/CubeGeometry";
 import { Sprite } from "./threeComponent/Sprite";
+import { DominoPhysics } from "./threeComponent/DominoPhysics";
 import classes from "../CSS/LandingPage.module.css";
 // import { DominoPhysics } from "./threeComponent/DominoPhysics";
 
@@ -11,9 +12,11 @@ const items = [
   { type: "img", src: "/models4.jpg" },
   { type: "img", src: "/models5.png" },
   { type: "img", src: "/models6.jpg" },
-  { type: "component", component: Sprite },
-  { type: "component", component: CubeGeometry },
-  // { type: "component", component: DominoPhysics },
+  {type: "img", src: "/models7.png"},
+  // {type: "img", src: '/models8.png'},
+  { type: "component", label: "Sprite Raindrops", component: Sprite },
+  { type: "component", label: "Cube Geometry", component: CubeGeometry },
+  { type: "component", label: "Domino Physics", component: DominoPhysics },
 ];
 
 export function LandingPage() {
@@ -44,7 +47,10 @@ export function LandingPage() {
             )}
 
             {expandedItem.type === "component" && (
-              <expandedItem.component />
+              <div key={expandedIndex} className={classes.threeWrapper}>
+                <expandedItem.component />
+                 </div>
+              
             )}
           </div>
         </div>
@@ -71,7 +77,8 @@ export function LandingPage() {
 
                 {item.type === "component" && (
                   <div className={classes.image}>
-                    <Component />
+                    (Click) <br/>
+                    {item.label}
                   </div>
                 )}
               </div>

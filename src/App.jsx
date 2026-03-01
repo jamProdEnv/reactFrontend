@@ -146,6 +146,7 @@ function App() {
           path: "/AL6p/3W8T/1s/Yq7n/Rv2k/Bm4p",
           element: <AdminLogin />,
         },
+
       ],
     },
   ]);

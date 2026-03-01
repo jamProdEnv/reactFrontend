@@ -144,6 +144,7 @@ button {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
+  z-index: 1000000000000000000000;
 }
 
 .modalClose::after {
