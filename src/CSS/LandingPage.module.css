@@ -110,8 +110,8 @@ img {
   align-items: center;
   overflow: auto;
   margin: 0 auto;
-  width: 600px;
-  height: 600px;
+  width: 4000px;
+  height: 400px;
 
 }
 
@@ -280,6 +280,11 @@ button {
   .content h1 {
     font-size: 7em;
     text-shadow: 0 10px 20px #000;
+  }
+
+  .modelOverlay {
+    width: 600px;
+    height: 600px;
   }
 }
 

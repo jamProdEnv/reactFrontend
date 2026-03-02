@@ -8,11 +8,21 @@ margin: 0 auto;
 }
 
 .threeCanvas {
-  display: block;
+     display: block;
   margin: 0 auto;
-  width: 600px;
-  height: 600px;
+ width: 400px;
+ height: 400px;
 
+}
+
+@media screen and (min-width: 600px){
+    .threeCanvas {
+     display: block;
+  margin: 0 auto;
+ width: 600px;
+ height: 600px;
+
+}
 }
 
 /* .controls {
