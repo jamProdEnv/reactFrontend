@@ -66,9 +66,9 @@ export function LandingPage() {
           )}
 
           {ActiveItem.type === "component" && (
-            <div className={classes.threeWrapper}>
+            // <div className={classes.threeWrapper}>
               <ActiveItem.component />
-            </div>
+            // </div>
           )}
         </div>
       )}
