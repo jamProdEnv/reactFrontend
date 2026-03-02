@@ -35,23 +35,30 @@ export function LandingPage() {
           className={classes.modalOverlay}
         >
           
-          <div
+          {/* <div
             className={classes.modalContent}
           
-          >
-            <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
+          > */}
+           
             {ActiveItem.type === "img" && (
+              <div className={classes.componentContainer}>
+                 <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
               <img src={ActiveItem.src} alt="" className={classes.fullImage}/>
+              </div>
             )}
 
             {ActiveItem.type === "component" && (
               // <div key={expandedIndex} className={classes.threeWrapper}>
-                <ActiveItem.component />
+              <div className={classes.componentContainer}>
+                 <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
+                 <ActiveItem.component />
+              </div>
+               
                 //  {/* </div> */}
               
             )}
           </div>
-        </div>
+        // </div>
       )}
 
       <div className={classes.banner}>
