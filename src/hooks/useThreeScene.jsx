@@ -21,7 +21,8 @@ export function useThreeScene(initScene) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
-      container.clientWidth / container.clientHeight,
+    //   container.clientWidth / container.clientHeight,
+    1,
       0.1,
       1000
     );
@@ -34,7 +35,7 @@ export function useThreeScene(initScene) {
       const height = container.clientHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
+      renderer.setSize(400, 400, false);
     };
     resizeRef.current = resize;
 
