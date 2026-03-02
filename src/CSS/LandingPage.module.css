@@ -143,6 +143,9 @@ button {
 
 .componentContainer {
   position: relative;
+  width: min(400px, 90vw);
+  height: min(400px, 90vw);
+
 }
 
 .modalClose {
