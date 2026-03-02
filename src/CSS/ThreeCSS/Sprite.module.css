@@ -10,8 +10,8 @@ margin: 0 auto;
 .threeCanvas {
   display: block;
   margin: 0 auto;
-  width: 400px;
-  height: 400px; /* THIS is the missing piece */
+  width: 600px;
+  height: 600px; /* THIS is the missing piece */
 }
 
 /* .controls {
