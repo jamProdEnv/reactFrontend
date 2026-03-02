@@ -31,7 +31,7 @@
 
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 800px){
   .threeCanvas {
     width: 400px;
   }
