@@ -145,7 +145,7 @@ img {
   line-height: .5;
   top: .5em;
   left: 0.15em;
-  right: 0.15em;
+  /* right: 0.15em; */
   text-indent: 0;
   content: "\00D7";
  
@@ -289,6 +289,11 @@ button {
   .modalOverlay {
     width: 600px;
     height: 100%;
+  }
+
+  .modalClose::after{
+    top: 1em;
+    left: .5em;
   }
  
 }
