@@ -33,7 +33,8 @@ export function useThreeScene(initScene) {
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
-      camera.aspect = width / height;
+    //   camera.aspect = width / height;
+    camera.aspect = 1;
       camera.updateProjectionMatrix();
       renderer.setSize(400, 400, false);
     };
