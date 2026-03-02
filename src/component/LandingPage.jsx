@@ -13,7 +13,6 @@ const items = [
   { type: "img", src: "/models5.png" },
   { type: "img", src: "/models6.jpg" },
   {type: "img", src: "/models7.png"},
- 
   { type: "component", label: "Sprite Raindrops", component: Sprite },
   { type: "component", label: "Cube Geometry", component: CubeGeometry },
   { type: "component", label: "Domino Physics", component: DominoPhysics },
@@ -21,35 +20,33 @@ const items = [
 
 export function LandingPage() {
  
-  const [expandedIndex, setExpandedIndex] = useState(null);
+  // const [expandedIndex, setExpandedIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const ActiveItem = activeIndex !== null ? items[activeIndex] : null;
  
-  const expandedItem =
-    expandedIndex !== null ? items[expandedIndex] : null;
+  // const expandedItem =
+  //   expandedIndex !== null ? items[expandedIndex] : null;
 
   return (
     <div className={classes.container}>
      
-      {expandedItem && (
+      {ActiveItem && (
         <div
           className={classes.modalOverlay}
-        
         >
           
           <div
             className={classes.modalContent}
-           
-            onClick={(e) => e.stopPropagation()}
+          
           >
-            <button className={classes.modalClose}   onClick={() => setExpandedIndex(null)}>close</button>
-            {expandedItem.type === "img" && (
-              <img src={expandedItem.src} alt="" className={classes.fullImage}/>
+            <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
+            {ActiveItem.type === "img" && (
+              <img src={ActiveItem.src} alt="" className={classes.fullImage}/>
             )}
 
-            {expandedItem.type === "component" && (
+            {ActiveItem.type === "component" && (
               // <div key={expandedIndex} className={classes.threeWrapper}>
-                <expandedItem.component />
+                <ActiveItem.component />
                 //  {/* </div> */}
               
             )}
@@ -58,20 +55,20 @@ export function LandingPage() {
       )}
 
       <div className={classes.banner}>
-  
+      {!ActiveItem && (
         <div
           className={classes.slider}
           style={{ "--quantity": items.length }}
         >
-          {items.map((item, index) => {
-            const Component = item.component;
+          {items.map((item, index) => (
+            // const Component = item.component;
 
-            return (
+            
               <div
                 key={index}
                 className={classes.item}
                 style={{ "--position": index + 1 }}
-                onClick={() => setExpandedIndex(index)}
+                onClick={() => setActiveIndex(index)}
               >
                 {/* {item.type === "img" && (
                   <img src={item.src} alt="" />
@@ -84,16 +81,18 @@ export function LandingPage() {
                   </div>
                 )} */}
                  {item.type === "img" && <img src={item.src} alt="" />}
-                                {item.type === "component" && (
-                                  <div className={classes.image}>
-                                    (Click) <br />
-                                    {item.label}
-                                  </div>
-                                )}
+                  {item.type === "component" && (
+                      <div className={classes.image}>
+                          (Click) <br />
+                          {item.label}
+                      </div>
+                  )}
               </div>
-            );
-          })}
+            
+          ))}
+          
         </div>
+        )}
 
         <div className={classes.content}>
           <h1 data-content="WSJR PORTFOLIO">
@@ -108,6 +107,7 @@ export function LandingPage() {
 
           <div className={classes.model}></div>
         </div>
+      
       </div>
     </div>
   );
