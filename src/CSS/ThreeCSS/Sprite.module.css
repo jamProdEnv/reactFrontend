@@ -17,12 +17,14 @@ margin: 0 auto;
 
 @media screen and (min-width: 600px){
     .threeCanvas {
-     display: block;
-  margin: 0 auto;
- width: 600px;
- height: 600px;
-
+        width: 600px;
+    }
 }
+
+@media screen and (min-width: 800px){
+    .threeCanvas {
+        width: 800px;
+    }
 }
 /* .controls {
   position: absolute;

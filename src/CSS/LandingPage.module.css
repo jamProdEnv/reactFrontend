@@ -110,8 +110,8 @@ img {
   align-items: center;
   overflow: auto;
   margin: 0 auto;
-  width: 4000px;
-  height: 400px;
+  width: 400px;
+  height: auto;
 
 }
 
@@ -282,10 +282,11 @@ button {
     text-shadow: 0 10px 20px #000;
   }
 
-  .modelOverlay {
+  .modalOverlay {
     width: 600px;
-    height: 600px;
+    height: 100%;
   }
+ 
 }
 
 /* ============================= */
@@ -326,5 +327,10 @@ button {
 
   .author h2 {
     text-align: right;
+  }
+  
+   .modalOverlay {
+    width: 800px;
+    height: 100%;
   }
 }
