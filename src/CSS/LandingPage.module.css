@@ -10,7 +10,7 @@
   margin: auto;
   color: white;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100vw;
   height: 100vh;
 }
@@ -122,9 +122,10 @@ img {
 }
 
 .modalClose {
-  position: absolute;
-  top: 0.3em;
-  left: 0.3em;
+  /* position: absolute;
+  top: 5%;
+  left: 2%; */
+  display: block;
   padding: 0.3em;
   cursor: pointer;
   font-size: 2em;
@@ -143,8 +144,9 @@ img {
 .modalClose::after {
   position: absolute;
   line-height: .5;
-  top: .5em;
-  left: 0.15em;
+  top: 30%;
+  left: 32%;
+  
   /* right: 0.15em; */
   text-indent: 0;
   content: "\00D7";
@@ -291,11 +293,11 @@ button {
     height: 100%;
   }
 
-  .modalClose::after{
+  /* .modalClose::after{
     top: 1em;
     left: .5em;
   }
- 
+  */
 }
 
 /* ============================= */

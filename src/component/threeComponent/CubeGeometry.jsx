@@ -8,7 +8,7 @@ export function CubeGeometry() {
     // const container = mountRef.current;
 
      const isMobile = mountRef.current.clientWidth < 600;
-
+    
       
     // --- Scene setup ---
     // scene is already created by hook

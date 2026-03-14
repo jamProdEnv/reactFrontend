@@ -37,7 +37,7 @@ main {
 }
 
 footer {
-  display: block;
+  display: none;
   /* height: auto; */
   position: static;
   /* background-color: red; */
