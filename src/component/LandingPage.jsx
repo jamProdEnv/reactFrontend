@@ -28,41 +28,10 @@ export function LandingPage() {
   //   expandedIndex !== null ? items[expandedIndex] : null;
 
   return (
-    <div className={classes.container}>
-     
-      {ActiveItem && (
-        <div
-          className={classes.modalOverlay}
-        >
-          
-          {/* <div
-            className={classes.modalContent}
-          
-          > */}
-           
-            {ActiveItem.type === "img" && (
-              <div className={classes.componentContainer}>
-                 <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
-              <img src={ActiveItem.src} alt="" className={classes.fullImage}/>
-              </div>
-            )}
-
-            {ActiveItem.type === "component" && (
-              // <div key={expandedIndex} className={classes.threeWrapper}>
-              <div className={classes.componentContainer}>
-                 <button className={classes.modalClose}   onClick={() => setActiveIndex(null)}>close</button>
-                 <ActiveItem.component />
-              </div>
-               
-                //  {/* </div> */}
-              
-            )}
-          </div>
-        // </div>
-      )}
+    <div className={classes.container }>
 
       <div className={classes.banner}>
-      {!ActiveItem && (
+     
         <div
           className={classes.slider}
           style={{ "--quantity": items.length }}
@@ -75,18 +44,7 @@ export function LandingPage() {
                 key={index}
                 className={classes.item}
                 style={{ "--position": index + 1 }}
-                onClick={() => setActiveIndex(index)}
               >
-                {/* {item.type === "img" && (
-                  <img src={item.src} alt="" />
-                )}
-
-                {item.type === "component" && (
-                  <div className={classes.image}>
-                    (Click) <br/>
-                    {item.label}
-                  </div>
-                )} */}
                  {item.type === "img" && <img src={item.src} alt="" />}
                   {item.type === "component" && (
                       <div className={classes.image}>
@@ -95,11 +53,12 @@ export function LandingPage() {
                       </div>
                   )}
               </div>
-            
-          ))}
+          )
+          )}
+        
           
         </div>
-        )}
+      
 
         <div className={classes.content}>
           <h1 data-content="WSJR PORTFOLIO">
@@ -115,7 +74,8 @@ export function LandingPage() {
           <div className={classes.model}></div>
         </div>
       
-      </div>
+     
+    </div>
     </div>
   );
 }
