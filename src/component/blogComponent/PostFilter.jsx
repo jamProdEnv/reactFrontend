@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useState, useEffect } from "react";
 import classes from "../../CSS/PostCSS/PostFilter.module.css";
 export function PostFilter({
   // field, value, onChange
@@ -45,6 +45,15 @@ export function PostFilter({
     },
     [searchBy, onSearchByChange, onQueryChange]
   );
+
+    // ✅ Debounce input changes
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      onQueryChange(inputValue);
+    }, 2000); // 500ms delay
+
+    return () => clearTimeout(handler); // Clear previous timeout if input changes
+  }, [inputValue, onQueryChange]);
   return (
     <div className={classes.container}>
       <div className={classes.div1}>
@@ -78,8 +87,10 @@ export function PostFilter({
           //   setInputValue(e.target.value);
           //   onChange(e.target.value);
           // }}
-          value={query}
-          onChange={(e) => onQueryChange(e.target.value)}
+          // value={query}
+          // onChange={(e) => onQueryChange(e.target.value)}
+          value={inputValue} // <-- use local state
+    onChange={(e) => setInputValue(e.target.value)} // <-- update local state only
           className={classes.textInput}
         />
       )}

@@ -14,4 +14,4 @@ export function PostList({ posts = [] }) {
   );
 }
 
-export default memo(PostList);
+// export default memo(PostList);

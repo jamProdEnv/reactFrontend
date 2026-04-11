@@ -21,15 +21,6 @@
   top: 0;
 } */
 
-/* Implement This Later */
-.filterButton {
-  display: none;
-}
-
-.search {
-  width: 100%;
-  position: relative;
-}
 
 .modalContainer {
   width: 100%;
@@ -76,16 +67,39 @@
   color: blue;
 }
 
+.search {
+    display: block;
+    /* display: block; */
+    width: 100%;
+  
+  }
+
+.sorting {
+  display: none;
+}
+
 @media screen and (min-width: 600px) {
   .header {
     display: block;
     margin-top: 0;
     position: sticky;
   }
+  .sorting {
+    margin-top: 0;
+  }
 
   .search {
-    display: none;
+    display: block;
+    /* display: block; */
+    width: 100%;
+  
   }
+
+  .sorting {
+    display: block;
+
+}
+  
 }
 
 @media screen and (min-width: 800px) {
@@ -99,9 +113,7 @@
     top: 125px;
   }
 
-  .search {
-    display: none;
-  }
+  
 
   .modalBody {
     position: absolute;
@@ -151,9 +163,6 @@
     margin-top: 0;
   }
 
-  .search {
-    display: none;
-  }
 
   .modalBody {
     position: absolute;

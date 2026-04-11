@@ -63,17 +63,45 @@ export function BlogDisplay({
 
   //   fetchPosts();
   // }, [selectedTag, searchBy, query, sortBy, sortOrder]);
+  // const { data: posts = [] } = useQuery({
+  //   queryKey: ["posts", selectedTag, searchBy, query, sortBy, sortOrder],
+  //   queryFn: () =>
+  //     getPosts(
+  //       selectedTag && selectedTag !== "blog"
+  //         ? { tag: selectedTag }
+  //         : searchBy && query
+  //           ? { [searchBy]: query }
+  //           : undefined,
+  //     ),
+  // });
+
   const { data: posts = [] } = useQuery({
-    queryKey: ["posts", selectedTag, searchBy, query, sortBy, sortOrder],
-    queryFn: () =>
-      getPosts(
-        selectedTag && selectedTag !== "blog"
-          ? { tag: selectedTag }
-          : searchBy && query
-            ? { [searchBy]: query }
-            : undefined,
-      ),
-  });
+  queryKey: ["posts", selectedTag, searchBy, query, sortBy, sortOrder],
+  queryFn: () => {
+    const params = {};
+
+   
+
+    if (selectedTag /*&& selectedTag !== "blog"*/) {
+      params.tag = selectedTag;
+    } else if (searchBy && query) {
+      params[searchBy] = query;
+    }
+
+    // ✅ ADD THESE
+    // if (!isTagSearch){
+    //   params.sortBy = sortBy || "createdAt";
+    //   params.sortOrder = sortOrder || "descending";
+    // }
+
+    if (sortBy) params.sortBy = sortBy || "createdAt";
+    if (sortOrder) params.sortOrder = sortOrder || "descending";
+
+   
+
+    return getPosts(params);
+  },
+});
   return (
     <>
       <div className={classes.container}>
@@ -93,23 +121,8 @@ export function BlogDisplay({
         </div>
         <div className={classes.search}>
           <section>
-            <button
-              className={` ${classes.filterButton} ${showModal ? classes.hideFilterButton : classes.filterButton}`}
-              onClick={() => setShowModal(true)}
-            >
-              Filters
-            </button>
-            {showModal && (
-              <section className={classes.modalContainer}>
-                <div className={classes.modal}>
-                  <div className={classes.modalBackdrop}></div>
-                  <div className={classes.modalBody}>
-                    <button
-                      onClick={() => setShowModal(false)}
-                      className={classes.modalClose}
-                    >
-                      x
-                    </button>
+           
+           
                     <div className={classes.filter}>
                       <PostFilter
                         // field="searchBy"
@@ -131,12 +144,11 @@ export function BlogDisplay({
                         onOrderChange={(orderValue) =>
                           onSortChange(sortBy, orderValue)
                         }
+
                       />
                     </div>
-                  </div>
-                </div>
-              </section>
-            )}
+             
+            
           </section>
         </div>
         <div className={`${classes.tile} ${classes.posts}`}>

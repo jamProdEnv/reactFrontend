@@ -19,9 +19,10 @@ import { AdminContextProvider } from "./context/AdminContext";
 import { MobileChat } from "./pages/chatPages/MobileChat";
 import { CubeGeometry } from "./component/threeComponent/CubeGeometry";
 import { SocialNavPage } from "./pages/SocialNavPage";
+const queryClient = new QueryClient();
 
 function App() {
-  const queryClient = new QueryClient();
+  
   // const router = createBrowserRouter([
   //   {
   //     element: <Wrapper />,

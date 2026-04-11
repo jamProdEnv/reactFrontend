@@ -1,27 +1,11 @@
 .container {
+    display: flex;
 }
 
-.label {
-  display: flex;
+.container > .div1 + .textInput {
+    margin-top: 0;
 }
 
-.div1 {
-  display: flex;
-}
-
-.label {
-  margin: 0 0.5em 0 0.5em;
-}
-.div1 .options {
-  margin-top: 0;
-}
-
-.options {
-  margin-top: 0;
-}
-
-@media screen and (min-width: 800px) {
-  .container {
-    display: block;
-  }
+.textInput {
+    margin-left: 1em;
 }

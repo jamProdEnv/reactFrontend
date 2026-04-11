@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import { memo, useState, useEffect, useCallback } from "react";
 import classes from "../../CSS/PostCSS/PostSorting.module.css";
 export function PostSorting({
   fields = [],
@@ -6,14 +6,44 @@ export function PostSorting({
   orderValue,
   onOrderChange,
   onChange,
+  
 }) {
-  const handleSelect = useCallback((field) => {
-    if (value === field) {
-      onChange(""); // unselect
-    } else {
-      onChange(field);
-    }
-  });
+
+  const [localOrder, setLocalOrder] = useState(orderValue);
+
+  // keep local state in sync if parent changes it externally
+  useEffect(() => {
+    setLocalOrder(orderValue);
+  }, [orderValue]);
+
+  // const handleSelect = useCallback((field) => {
+  //   if (value === field) {
+  //     onChange(""); // unselect
+  //   } else {
+  //     onChange(field);
+  //   }
+  // });
+
+   const handleSelect = useCallback(
+    (field) => {
+      if (value === field) {
+        onChange("");
+      } else {
+        onChange(field);
+      }
+    },
+    [value, onChange]
+  );
+
+   // ✅ debounce order changes
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      onOrderChange(localOrder);
+    }, 400); // 400ms debounce
+
+    return () => clearTimeout(handler);
+  }, [localOrder, onOrderChange]);
+
   return (
     // <div className={classes.postSortingContainer}>
     //   <label className={classes.postSortBylabel} htmlFor="sort-by">
@@ -57,6 +87,7 @@ export function PostSorting({
           <label key={field} className={classes.sortLabel}>
             <input
               type="checkbox"
+             
               checked={value === field}
               onChange={() => handleSelect(field)}
               className={classes.sortCheckbox}
@@ -86,6 +117,7 @@ export function PostSorting({
         <label className={classes.radioLabel}>
           <input
             type="radio"
+          
             name="sort-order"
             value="ascending"
             checked={orderValue === "ascending"}
@@ -100,11 +132,19 @@ export function PostSorting({
         <label className={classes.radioLabel}>
           <input
             type="radio"
+
             name="sort-order"
             value="descending"
-            checked={orderValue === "descending"}
+            // checked={orderValue === "descending"}
+            // onChange={() =>
+            //   onOrderChange(orderValue === "descending" ? "" : "descending")
+            // }
+            checked={localOrder === "descending"}
             onChange={() =>
-              onOrderChange(orderValue === "descending" ? "" : "descending")
+              // ✅ CHANGED: update local state instead of calling parent directly
+              setLocalOrder(
+                localOrder === "descending" ? "" : "descending"
+              )
             }
             className={classes.radioInput}
           />
