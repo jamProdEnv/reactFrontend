@@ -96,7 +96,12 @@ export function Post({ _id, title, contents, author, tags, createdAt }) {
         </button>
       )}
       {role === "admin" && (
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => {
+          setIsEditing(true);          
+          setUpdatedTitle(title);
+          setUpdatedContents(contents);}}>
+            Edit
+        </button>
       )}
       
       </>
