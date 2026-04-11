@@ -97,6 +97,7 @@ export function CreatePost() {
           </div>
         </div>
       </form>
+     
     </div>
   );
 }

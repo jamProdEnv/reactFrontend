@@ -143,6 +143,7 @@ export function BlogDisplay({
           <Suspense fallback={null}>
             <PostList posts={posts} />
           </Suspense>
+          
         </div>
 
         {/* <div className={classes.blogDisplayContainer}>
