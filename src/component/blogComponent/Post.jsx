@@ -95,7 +95,10 @@ export function Post({ _id, title, contents, author, tags, createdAt }) {
           Delete
         </button>
       )}
-      <button onClick={() => setIsEditing(true)}>Edit</button>
+      {role === "admin" && (
+        <button onClick={() => setIsEditing(true)}>Edit</button>
+      )}
+      
       </>
     ) : (
       <>
