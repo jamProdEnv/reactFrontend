@@ -10,6 +10,8 @@
   overflow: auto;
 }
 
+
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -76,6 +78,24 @@
 
 .sorting {
   display: none;
+  
+}
+
+.tagHeader {
+  display: flex;
+  align-self: center;
+  margin-top: 0;
+}
+
+
+.tagHeader > .tagHeaderTags {
+  display: flex;
+  margin-top: 0;
+  margin-left: 1.5em;
+}
+
+.tagHeaderTags > p + p {
+  margin-left: 1em;
 }
 
 @media screen and (min-width: 600px) {

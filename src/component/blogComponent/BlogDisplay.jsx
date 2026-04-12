@@ -114,7 +114,8 @@ export function BlogDisplay({
             <BlogHeader onTagSelect={handleSelectTag} />
           </Suspense>
         </div> */}
-        <div className={`${classes.tile} ${classes.createPosts}`}>
+        
+        <div className={`${classes.title} ${classes.createPosts}`}>
           <Suspense fallback={null}>
             <CreatePost />
           </Suspense>
@@ -150,6 +151,14 @@ export function BlogDisplay({
              
             
           </section>
+          <section className={classes.tagHeader}>
+          <p>Tag Options:</p>
+          <div className={classes.tagHeaderTags}>
+            
+          <p>informational</p>
+            <p>technology</p>
+            </div>
+        </section>
         </div>
         <div className={`${classes.tile} ${classes.posts}`}>
           <Suspense fallback={null}>
