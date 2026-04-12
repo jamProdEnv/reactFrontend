@@ -41,10 +41,15 @@ export function PostFilter({
   const handleSelect = useCallback(
     (opt) => {
       onSearchByChange(opt === searchBy ? "" : opt);
+      setInputValue("");
       onQueryChange("");
     },
     [searchBy, onSearchByChange, onQueryChange]
   );
+
+  useEffect(() => {
+  setInputValue(query || "");
+}, [query]);
 
     // ✅ Debounce input changes
   useEffect(() => {

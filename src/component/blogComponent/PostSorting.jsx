@@ -39,7 +39,7 @@ export function PostSorting({
   useEffect(() => {
     const handler = setTimeout(() => {
       onOrderChange(localOrder);
-    }, 400); // 400ms debounce
+    }, 2000); // 400ms debounce
 
     return () => clearTimeout(handler);
   }, [localOrder, onOrderChange]);
@@ -120,9 +120,13 @@ export function PostSorting({
           
             name="sort-order"
             value="ascending"
-            checked={orderValue === "ascending"}
+            // checked={orderValue === "ascending"}
+            checked={localOrder === "ascending"}
             onChange={() =>
-              onOrderChange(orderValue === "ascending" ? "" : "ascending")
+              // onOrderChange(orderValue === "ascending" ? "" : "ascending")
+              setLocalOrder(
+                localOrder === "ascending" ? "" : "ascending"
+              )
             }
             className={classes.radioInput}
           />
