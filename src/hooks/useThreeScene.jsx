@@ -35,8 +35,9 @@ export function useThreeScene(initScene) {
       const height = container.clientHeight;
       camera.aspect = width / height;
     // camera.aspect = 1;
-      camera.updateProjectionMatrix();
-      renderer.setSize(400, 400, false);
+      // camera.updateProjectionMatrix();
+    //  renderer.setSize(400, 400, false);
+    renderer.setSize(width, height, false);
     };
     resizeRef.current = resize;
 

@@ -9,7 +9,7 @@ import classes from "../CSS/Wrapper.module.css";
 export function Wrapper() {
   const { username } = userContext();
   return (
-    <>
+    <div className={classes.wrapper}>
       <div className={classes.container}>
         <header className={classes.header}>
           <GlobalHeader />
@@ -19,9 +19,10 @@ export function Wrapper() {
         </main>
         <ChatRoom />
       </div>
-      <footer>
+      {/* <footer>
         <GlobalFooter />
-      </footer>
-    </>
+      </footer> */}
+    
+    </div>
   );
 }
