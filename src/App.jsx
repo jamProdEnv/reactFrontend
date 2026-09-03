@@ -9,7 +9,6 @@ import { UserContextProvider } from "./context/UserContext";
 import { Blog } from "./pages/blogPages/Blog";
 import { Wrapper } from "./component/Wrapper";
 import { LandingPage } from "./component/LandingPage";
-import { LandingPageV2} from "./pages/landingPages/LandingPageV2";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
 import { GlobalFooter } from "./component/GlobalFooter";
