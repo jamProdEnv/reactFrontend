@@ -7,8 +7,21 @@
   align-items: center;
   width: 100%;
   margin: 0;
-  background-color: black;
+  /* background-color: black; */
   font-size: small;
+  /* background-color: #257199; */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.04) 45%,
+      rgba(0, 0, 0, 0.08) 100%
+    ),
+    #257199;
+
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .header::after {

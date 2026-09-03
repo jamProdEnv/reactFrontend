@@ -9,18 +9,19 @@ margin: 0 auto;
 
 .threeCanvas {
   position: relative;
-     display: block;
+  display: block;
   /* margin: 0 auto; */
  width: 100vw;
- height: 400px;
+ height: 100vh;
 
 }
 
-@media screen and (min-width: 800px){
+/* @media screen and (min-width: 800px){
   .threeCanvas {
     width: 400px;
+    height: 400px;
   }
-}
+} */
 
 
 /* .controls {

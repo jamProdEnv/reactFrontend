@@ -9,6 +9,7 @@ import { UserContextProvider } from "./context/UserContext";
 import { Blog } from "./pages/blogPages/Blog";
 import { Wrapper } from "./component/Wrapper";
 import { LandingPage } from "./component/LandingPage";
+import { LandingPageV2} from "./pages/landingPages/LandingPageV2";
 import { Resume } from "./component/Resume";
 import { UserPage } from "./pages/userPages/UserPage";
 import { GlobalFooter } from "./component/GlobalFooter";
@@ -19,6 +20,9 @@ import { AdminContextProvider } from "./context/AdminContext";
 import { MobileChat } from "./pages/chatPages/MobileChat";
 import { CubeGeometry } from "./component/threeComponent/CubeGeometry";
 import { SocialNavPage } from "./pages/SocialNavPage";
+import { ClassNames } from "@emotion/react";
+import { element } from "prop-types";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -86,7 +90,9 @@ function App() {
         {
           // path: "/X9a3/B7L0/r/Pq4t/G1v8/Zx5k",
           path: "/",
-          element: <LandingPage />,
+          // element: <LandingPage />,
+          // element: <LandingPageV2 />,
+          element: <CubeGeometry />
         },
 
         // Resume page
@@ -150,10 +156,11 @@ function App() {
 
       ],
     },
+   
   ]);
 
   return (
-    <>
+    <div>
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
           <AdminContextProvider>
@@ -165,7 +172,7 @@ function App() {
           </AdminContextProvider>
         </AuthContextProvider>
       </QueryClientProvider>
-    </>
+    </div>
   );
 }
 
